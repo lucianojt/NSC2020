@@ -19,7 +19,7 @@
         <small style="margin: 0 0 14px" class="form-text text-muted">pincode ที่ได้มาจากผู้ดูแลห้อง</small>
       </div>
       <div class="pincode">
-        <input type="text" class="form-control" placeholder="xxxx">
+        <input type="text" name="pincode" class="form-control" placeholder="xxxx">
         <button type="submit" class="btn btn-info">ตกลง</button>
       </div>
     </div>
@@ -33,6 +33,9 @@
 </html>
 
 <style>
+body {
+  background: #F5F5F5;
+}
 .bodyDetail {
   border: none;
   position: absolute;
