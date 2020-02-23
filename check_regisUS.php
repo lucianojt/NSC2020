@@ -4,6 +4,12 @@ date_default_timezone_set('Asia/Bangkok');
 include("database/database.php");
 $connection = mysqli_connect($localhost,$username,$pass,$database);
 mysqli_set_charset($connection,'utf8');
+?>
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>สมัครสมาชิก</title>
+<?php
 include('header2.php'); ?>
 <div class="container"><br><br>
 <?php  
@@ -14,24 +20,18 @@ $uploade_path = $img_path.$new_imgname;
 
 $sec = move_uploaded_file($_FILES['pic_usr']['tmp_name'],$uploade_path);
 if($sec==FALSE){
-?>
-<br><br><br><br><br>
-  <div class="container" >
-  <div class="card">
-  <div class="card-body "  style="text-align: center; background-color: #FECCCC;"  >
-  <div class="centered">กรุณาใส่รูปภาพ</div>
-  </div>
-</div><br>
-   <div class="link">
-       <a href="registration_user.php" class="btn btn-outline-dark">ตกลง</a>
-   </div>
-<?php
+  ?>
+    <div class="success">
+      <div class="title">
+        <p>คุณยังไม่ได้ใส่รูปภาพ !!</p>
+        <div class="anima">
+          <a class="btn btn-info" href="registration_user.php" role="button">ตกลง</a>
+        </div>
+      </div>
+    </div>
+  <?php
 }else{
 $image = $new_imgname;
-
-// $target = "../images/userpic/".basename($_FILES['pic_usr']['name']);
-// $image = $_FILES['pic_usr']['name'];
-// move_uploaded_file($_FILES['pic_usr']['tmp_name'],$target);
 $use_name = $_POST['user'];
 $use_lname =  $_POST['luser'];
 $use_user =  $_POST['username'];
@@ -40,8 +40,6 @@ $use_email =  $_POST['email'];
 
 $day = date("j-F-Y ");
 $time = date("g:i a");
-
-
 
 $sqlHr = "SELECT user_hr FROM regis_hr";
 $resultHr = mysqli_query($connection,$sqlHr); 
@@ -76,86 +74,63 @@ while($rowADMIN = mysqli_fetch_assoc($resultADMIN)){
 
 if( in_array($use_user,$FoundUser)){
     ?> 
- <br><br><br><br><br>
-      <div class="container" >
-      <div class="card">
-      <div class="card-body "  style="text-align: center; background-color: #FECCCC;"  >
-      <div class="center">ขออภัยด้วยชื่อ  "<?php echo $use_user;?>" มีคนใช้แล้ว</div>
+    <div class="success">
+      <div class="title">
+        <p>ขออภัยด้วยชื่อ  "<?php echo $use_user;?>" มีคนใช้แล้ว</p>
+        <div class="anima">
+          <a class="btn btn-info" href="registration_user.php" role="button">ตกลง</a>
+        </div>
       </div>
-    </div><br>
-       <div class="link">
-           <a href="registration_user.php" class="btn btn-outline-dark">ตกลง</a>
-       </div>
-
+    </div>
     <?php
   }elseif(in_array($use_user,$FoundHr)){
-    ?> 
-    <br><br><br><br><br>
-      <div class="container" >
-      <div class="card">
-      <div class="card-body "  style="text-align: center; background-color: #FECCCC;"  >
-      <div class="center">ขออภัยด้วยชื่อ  "<?php echo $use_user;?>" มีคนใช้แล้ว</div>
+    ?>
+     <div class="success">
+      <div class="title">
+        <p>ขออภัยด้วยชื่อ  "<?php echo $use_user;?>" มีคนใช้แล้ว</p>
+        <div class="anima">
+          <a class="btn btn-info" href="registration_user.php" role="button">ตกลง</a>
+        </div>
       </div>
-    </div><br>
-       <div class="link">
-           <a href="registration_user.php" class="btn btn-outline-dark">ตกลง</a>
-       </div>
-    
-        <?php
-
-  }elseif(in_array($use_user,$FoundADMIN)){
-
-    ?> 
-<br><br><br><br><br>
-  <div class="container" >
-  <div class="card">
-  <div class="card-body "  style="text-align: center; background-color: #FECCCC;"  >
-  <div class="center">ขออภัยด้วยชื่อ  "<?php echo $use_user;?>" มีคนใช้แล้ว</div>
-  </div>
-</div><br>
-   <div class="link">
-       <a href="registration_user.php" class="btn btn-outline-dark">ตกลง</a>
-   </div>
-
+    </div>
     <?php
-
+  }elseif(in_array($use_user,$FoundADMIN)){
+    ?>
+     <div class="success">
+      <div class="title">
+        <p>ขออภัยด้วยชื่อ  "<?php echo $use_user;?>" มีคนใช้แล้ว</p>
+        <div class="anima">
+          <a class="btn btn-info" href="registration_user.php" role="button">ตกลง</a>
+        </div>
+      </div>
+    </div>
+    <?php
   }elseif(in_array($use_email,$FoundUserEmail)){
-
-   ?> 
-    <br><br><br><br><br>
-      <div class="container" >
-      <div class="card">
-      <div class="card-body "  style="text-align: center; background-color: #FECCCC;"  >
-      <div class="center">ขออภัยด้วยอีเมล  "<?php echo $use_email;?>" มีคนใช้แล้ว</div>
+   ?>
+    <div class="success">
+      <div class="title">
+        <p>ขออภัยด้วยชื่อ  "<?php echo $use_email;?>" มีคนใช้แล้ว</p>
+        <div class="anima">
+          <a class="btn btn-info" href="registration_user.php" role="button">ตกลง</a>
+        </div>
       </div>
-    </div><br>
-       <div class="link">
-           <a href="registration_user.php" class="btn btn-outline-dark">ตกลง</a>
-       </div>
-    
-        <?php
-
+    </div>
+  <?php
   }elseif(in_array($use_email,$FoundHrEmail)){
-
-    ?> 
-    <br><br><br><br><br>
-      <div class="container" >
-      <div class="card">
-      <div class="card-body "  style="text-align: center; background-color: #FECCCC;"  >
-      <div class="center">ขออภัยด้วยอีเมล  "<?php echo $use_email;?>" มีคนใช้แล้ว>
+    ?>
+    <div class="success">
+      <div class="title">
+        <p>ขออภัยด้วยชื่อ  "<?php echo $use_email;?>" มีคนใช้แล้ว</p>
+        <div class="anima">
+          <a class="btn btn-info" href="registration_user.php" role="button">ตกลง</a>
+        </div>
       </div>
-    </div><br>
-       <div class="link">
-           <a href="registration_user.php" class="btn btn-outline-dark">ตกลง</a>
-       </div>
-    
-        <?php
-
+    </div>
+    <?php
   }else{
-
     $sql = "INSERT INTO regis_usr VALUES(NULL,'$image','$use_name','$use_lname','$use_user','$use_pass','$use_email','$day','$time','-')";
-    // $result = mysqli_query($connection,$sql);
-    if($sql ==TRUE){
+    $result = mysqli_query($connection,$sql);
+    if($result == TRUE){
       ?>
       <div class="success">
         <div class="title">
@@ -165,7 +140,7 @@ if( in_array($use_user,$FoundUser)){
           </div>
         </div>
       </div>
-      <?php        
+      <?php
     }else{
       header("location:logout.php");  
     } 
@@ -176,7 +151,6 @@ if( in_array($use_user,$FoundUser)){
   <?php 
   ob_end_flush();
   include('footer.php'); ?>
-
 <style>
 body {
   background: #F5F5F5;
@@ -211,16 +185,16 @@ body {
 }
 @keyframes example {
   0% {
-    left: 10%;
+    left: 8%;
   }
   25% {
-    left: -10%;
+    left: -8%;
   }
   50% {
-    left: 5%;
+    left: 3%;
   }
   75% {
-    left: -5%;
+    left: -3%;
   }
   100% {
     left: 0%;

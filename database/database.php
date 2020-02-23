@@ -1,6 +1,6 @@
 <?php
-      $localhost = "localhost";
-      $username = "root";
-      $pass = "";
-      $database = "hotel";
+  $localhost = "localhost";
+  $username = "root";
+  $pass = "";
+  $database = "hotel";
 ?>
