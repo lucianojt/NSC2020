@@ -22,36 +22,34 @@ include('header2.php');
   $hr_email = $_POST['email'];
   $codehr = mt_rand(1111, 9999);
   
-  
   $sqlHr = "SELECT user_hr FROM regis_hr";
   $resultHr = mysqli_query($connection,$sqlHr); 
   while($rowHr = mysqli_fetch_assoc($resultHr)){
-      $FoundHr[] = $rowHr['user_hr'];
+    $FoundHr[] = $rowHr['user_hr'];
   }
-  
   $sqlHrEmail = "SELECT mail_hr FROM regis_hr";
   $resultHrEmail = mysqli_query($connection,$sqlHrEmail); 
   while($rowHrEmail = mysqli_fetch_assoc($resultHrEmail)){
-      $FoundHrEmail[] = $rowHrEmail['mail_hr'];
+    $FoundHrEmail[] = $rowHrEmail['mail_hr'];
   }
   
   
   $sqlUser = "SELECT user_usr FROM regis_usr";
   $resultUser = mysqli_query($connection,$sqlUser); 
   while($rowUser = mysqli_fetch_assoc($resultUser)){
-      $FoundUser[] = $rowUser['user_usr'];
+    $FoundUser[] = $rowUser['user_usr'];
   }
   
   $sqlUserEmail = "SELECT email_usr FROM regis_usr";
   $resultUserEmail = mysqli_query($connection,$sqlUserEmail); 
   while($rowUserEmail = mysqli_fetch_assoc($resultUserEmail)){
-      $FoundUserEmail[] = $rowUserEmail['email_usr'];
+    $FoundUserEmail[] = $rowUserEmail['email_usr'];
   }
   
   $ADMIN = "SELECT user FROM ADMIN";
   $resultADMIN = mysqli_query($connection,$ADMIN); 
   while($rowADMIN = mysqli_fetch_assoc($resultADMIN)){
-      $FoundADMIN[] = $rowADMIN['user'];
+    $FoundADMIN[] = $rowADMIN['user'];
   }
 
   if (in_array($hr_username,$FoundUser)) {

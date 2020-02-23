@@ -1,179 +1,88 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href='https://fonts.googleapis.com/css?family=Kanit:400,300&subset=thai,latin' rel='stylesheet' type='text/css'>
-    <title>regis</title>
-</head>
-<body>
-<?php
-//echo $_COOKIE["user"];
-?>
-   <div class="container register">
-<form action="check_pincode.php" method="post">
-                <div class="row">
-                    <div class="col-md-3 register-left">
-                    <div class="imga">
-                        <img src="images/Logo-PSU.png" style="width:150px;"  alt=""/>
-                        <h3>ยินดีต้อนรับเข้าสู่</h3>
-                        <h2>Chiny</h2>
-                        </div>
-                    </div>
-                    <div class="col-md-9 register-right">
-                        <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                <h3 class="register-heading">กรุณาใส่ Pin Code</h3>
-                                <div class=" register-form">
-                                    <div class="col-md-6">
-                                        <div class="form-group" style="text-align: center;">
-                                            <input type="text" class="form-control"  name="pincode" placeholder="Pin Code *" value="" required  />
-                                            <input type="submit" class="btnRegister"  value="ตกลง" />
-                                           
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                <div class="row register-form">
-                               </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div> 
-</body>
+  <head>
+    <title>ใส่ pincode</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="images/logoPJ.png" >
+    <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+  <form action="check_pincode.php" method="post">
+    <div class="bodyDetail">
+      <div class="title">
+        <p style="font-size: 30px; margin: 0">PIN CODE</p>
+        <small style="margin: 0 0 14px" class="form-text text-muted">pincode ที่ได้มาจากผู้ดูแลห้อง</small>
+      </div>
+      <div class="pincode">
+        <input type="text" class="form-control" placeholder="xxxx">
+        <button type="submit" class="btn btn-info">ตกลง</button>
+      </div>
+    </div>
+  </form>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
 </html>
-<script>
-        
-</script>
-<style>
-body{
-    font-family: 'Kanit', sans-serif;
-    background-image: url('images/wall.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
 
-.imga{
-    background: #fff;
-    border-radius: 1.5rem;
-    width: cover;
-    text-align: center;
-    color: #000000;
-    padding: 3%;
+<style>
+.bodyDetail {
+  border: none;
+  position: absolute;
+  margin: 0 auto;
+  width: 50%;
+  height: auto;
+  border-radius: 20px;
+  top: 6%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  background-color: #FFFFFF;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  animation-name: example;
+  animation-duration: 1.1s;
 }
-.register{
-    /* background: linear-gradient(to right, #FF0000, #FF0033); */
-    margin-top: 4%;
-    padding: 3%;
-    border-radius: 1.5rem;
-    background-image: url('images/BG.gif');
-    
-    
+@media (max-width: 575.98px) {
+  .bodyDetail { 
+    width: 80%;
+  }
 }
-.register-left{
-    text-align: center;
-    color: #fff;
-    margin-top: 4%;
+@keyframes example {
+  0% {
+    top: 0%;
+  }
+  25% {
+    top: 20%;
+  }
+  50% {
+    top: 4%;
+  }
+  75% {
+    top: 10%;
+  }
+  100% {
+    top: 6%;
+  }
 }
-.register-left input{
-    border: none;
-    border-radius: 1.5rem;
-    padding: 2%;
-    width: 20%;
-    background: #f8f9fa;
-    font-weight: bold;
-    color: #383d41;
-    margin-top: 30%;
-    margin-bottom: 3%;
-    cursor: pointer;
+.title {
+  text-align: center;
+  margin: 20px 0;
 }
-.register-right{
-    background: #E6E6FA;
-    border-top-left-radius: 10% 50%;
-    border-bottom-left-radius: 10% 50%;
+.pincode {
+  margin: 0 20px 20px;
+  text-align: center;
 }
-.register-left img{
-    margin-top: 15%;
-    margin-bottom: 5%;
-    width: 25%;
-    -webkit-animation: mover 2s infinite  alternate;
-    animation: mover 1s infinite  alternate;
+input { 
+  text-align: center;
+  cursor: pointer;
 }
-@-webkit-keyframes mover {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-20px); }
-}
-@keyframes mover {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-20px); }
-}
-.register-left p{
-    font-weight: lighter;
-    padding: 12%;
-    margin-top: -9%;
-}
-.register .register-form{
-    padding: 10%;
-    margin-top: 10%;
-}
-.btnRegister{
-    
-    margin-top: 10%;
-    border: none;
-    border-radius: 1.5rem;
-    padding: 2%;
-    background: #FF0000;
-    color: #fff;
-    font-weight: 600;
-    height: 40%;
-    width: 50%;
-    cursor: pointer;
-    font-size: 22px;
-    text-align: center;
-}
-.register .nav-tabs{
-    margin-top: 3%;
-    border: none;
-    background: #0062cc;
-    border-radius: 1.5rem;
-    width: 28%;
-    float: right;
-}
-.register .nav-tabs .nav-link{
-    padding: 2%;
-    height: 34px;
-    font-weight: 600;
-    color: #fff;
-    border-top-right-radius: 1.5rem;
-    border-bottom-right-radius: 1.5rem;
-}
-.register .nav-tabs .nav-link:hover{
-    border: none;
-}
-.register .nav-tabs .nav-link.active{
-    width: 100px;
-    color: #0062cc;
-    border: 2px solid #0062cc;
-    border-top-left-radius: 1.5rem;
-    border-bottom-left-radius: 1.5rem;
-}
-.register-heading{
-    text-align: center;
-    margin-top: 8%;
-    margin-bottom: -15%;
-    color: #495057;
+.form-control {
+  margin: 14px 0;
 }
 </style>
