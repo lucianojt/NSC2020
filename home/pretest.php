@@ -266,7 +266,7 @@ p {
   color: black;
 }
 .container {
-  width: 76%;
+  width: 65%;
 }
 @media (max-width: 575.98px) {
   .container { 
