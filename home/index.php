@@ -925,16 +925,11 @@ unset($_SESSION["Index_Tout"]);
   </style>
 
 <div class="text"><h3>หน้าหลัก</h3></div><br>
-  
-  <?php
- 
+<?php
   if($_SESSION["username_user"]==""){
     header("location:../logout.php"); 
     exit();
   }else{
-//  echo "''".$_SESSION["username_user"]."''"." <br>";;
-//     echo "เข้าสู่ห้องเรียน"." <br>";
-//     echo "''".$_SESSION["pincode"]."''";
 ?>
 <div class="container" style=" text-align: center;">
 
