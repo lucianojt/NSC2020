@@ -21,6 +21,8 @@ $_SESSION["Situa_Tout"] = $Situa_Tout;
 $Sit_Dout = $_SESSION["Situa_Dout"];
 $Sit_Tout = $_SESSION["Situa_Tout"];
 
+
+
 $user = $_SESSION["username_user"];
 $code = $_SESSION["pincode"];
 
@@ -912,62 +914,40 @@ unset($_SESSION["Situa_Tout"]);
     <h6><a href="../home/index.php" class="text-reset">หน้าหลัก</a> > สถานการณ์</h6>
     
     </div>
+   
+
+
    <div class="container">
+   
+  
     <?php  
          ?>
  </div>
  
 <br>
-<?php 
-$use =  $_SESSION["username_user"];
-?>
 <div class="container">
 
-<h5>สถานการณ์เริ่มต้น</h5>
-<div class="aa">     
-    <a href="situation/checkin/checkin.php" class="card">
-    <div>
-    <img src="../images/checkin.png" height="60" width="60" >
-    </div><br>
-    เช็คอิน
-    </a>
-    
-    <?php 
-     $sql2 = "SELECT * FROM scoreCheckin WHERE user_usr = '$use' AND code = '$code' AND score_checkin >= 6";
-     $result2 = mysqli_query($connection,$sql2);
-     $row2 = mysqli_fetch_assoc($result2);
-     if(!$row2){
-         ?>
-            <button type="button" data-toggle="modal" data-target="#myModal" class="bb">
-            <div>
-            <img src="../images/check-in.png" height="60" width="60" >
-            </div><br>
-            การแจ้งออกจากโรงแรม (เช็คเอาท์)
-            </button>
-         <?php
-     }else{
-         ?>
-            <a href="situation/out/out.php" class="card">
-            <div>
-            <img src="../images/check-in.png" height="60" width="60" >
-            </div><br>
-            การแจ้งออกจากโรงแรม (เช็คเอาท์)
-            </a>
-         <?php
-     }
-    ?>
-</div><br>
-<h5>สถานการณ์ถัดไป</h5>
-<div class="aa">     
-    
-    <button type="button" data-toggle="modal" data-target="#myModal" class="bb">
-    <div>
-    <img src="../images/basic.png" height="60" width="60" >
-    </div><br>
-    ประโยคที่ใช้ในชีวิตประจำวัน
-    </button>
 
-    <button type="button" data-toggle="modal" data-target="#myModal"  class="bb">
+<?php  
+$use =  $_SESSION["username_user"];
+$code =  $_SESSION["pincode"];
+
+$sql3 = "SELECT * FROM scoreSim WHERE user_usr = '$use' AND code = '$code' ";
+$result3 = mysqli_query($connection,$sql3);
+$row3 = mysqli_fetch_assoc($result3);
+if(!$row3){
+    ?> 
+    
+            <div class="aa">
+
+        <a href="situation/simple/simple.php" class="card">
+        <div>
+        <img src="../images/basic.png" height="60" width="60" >
+        </div><br>
+        ประโยคที่ใช้ในชีวิตประจำวัน
+        </a>
+
+        <button type="button" data-toggle="modal" data-target="#myModal"  class="bb">
         <div>
         <img src="../images/resev.png" height="60" width="60" >
         </div><br>
@@ -980,6 +960,14 @@ $use =  $_SESSION["username_user"];
         </div><br>
         รายละเอียดของห้องพัก
         </button>
+
+        <button type="button" data-toggle="modal" data-target="#myModal"  class="bb">
+        <div>
+        <img src="../images/checkin.png" height="60" width="60" >
+        </div><br>
+        เช็คอิน
+        </button>
+
         <button type="button" data-toggle="modal" data-target="#myModal"  class="bb">
         <div>
         <img src="../images/hotel.png" height="60" width="60" >
@@ -989,31 +977,647 @@ $use =  $_SESSION["username_user"];
 
 
         <button type="button" data-toggle="modal" data-target="#myModal" class="bb">
+               <div>
+               <img src="../images/problem.png" height="60" width="60" >
+               </div><br>
+               ปัญหาระหว่างการเข้าพัก
+               </button>
+
+               <button type="button" data-toggle="modal" data-target="#myModal" class="bb">
+               <div>
+               <img src="../images/data.png" height="60" width="60" >
+               </div><br>
+               การให้ข้อมูลบริการด้านต่างๆ ของโรงแรม
+               </button>
+
+               <button type="button" data-toggle="modal" data-target="#myModal" class="bb">
+               <div>
+               <img src="../images/question.png" height="60" width="60" >
+               </div><br>
+               การสอบถามตำแหน่งสถานที่ และ บริการเรียกรถแท็กซี่
+               </button>
+
+               <button type="button" data-toggle="modal" data-target="#myModal" class="bb">
+               <div>
+               <img src="../images/check-in.png" height="60" width="60" >
+               </div><br>
+               การแจ้งออกจากโรงแรม (เช็คเอาท์)
+               </button>
+               
+        </div>
+
+    <?php
+}else{
+    $sql2 = "SELECT * FROM scoreSim WHERE user_usr = '$use' AND code = '$code' AND score_sim >= 6";
+    $result2 = mysqli_query($connection,$sql2);
+    $row2 = mysqli_fetch_assoc($result2);
+    if(!$row2){
+        // echo 'คะแนนไม่ถึง show อีกรอบ';
+        ?> 
+            <div class="aa">
+
+            <a href="situation/simple/simple.php" class="card">
+            <div>
+            <img src="../images/basic.png" height="60" width="60" >
+            </div><br>
+            ประโยคที่ใช้ในชีวิตประจำวัน
+            </a>
+
+            <button type="button" data-toggle="modal" data-target="#myModal" class="bb">
+            <div>
+            <img src="../images/resev.png" height="60" width="60" >
+            </div><br>
+            การจองห้องพัก
+            </button>
+
+            <button type="button" data-toggle="modal" data-target="#myModal"  class="bb">
+            <div>
+            <img src="../images/room.png" height="60" width="60" >
+            </div><br>
+            รายละเอียดของห้องพัก
+            </button>
+
+            <button type="button" data-toggle="modal" data-target="#myModal"  class="bb">
+            <div>
+            <img src="../images/checkin.png" height="60" width="60" >
+            </div><br>
+            เช็คอิน
+            </button>
+
+            <button type="button" data-toggle="modal" data-target="#myModal"  class="bb">
+            <div>
+            <img src="../images/hotel.png" height="60" width="60" >
+            </div><br>
+            แนะนำบริการต่างๆ ของโรงแรม
+            </button>
+
+            <button type="button" data-toggle="modal" data-target="#myModal" class="bb">
+               <div>
+               <img src="../images/problem.png" height="60" width="60" >
+               </div><br>
+               ปัญหาระหว่างการเข้าพัก
+               </button>
+
+               <button type="button" data-toggle="modal" data-target="#myModal" class="bb">
+               <div>
+               <img src="../images/data.png" height="60" width="60" >
+               </div><br>
+               การให้ข้อมูลบริการด้านต่างๆ ของโรงแรม
+               </button>
+
+               <button type="button" data-toggle="modal" data-target="#myModal" class="bb">
+               <div>
+               <img src="../images/question.png" height="60" width="60" >
+               </div><br>
+               การสอบถามตำแหน่งสถานที่ และ บริการเรียกรถแท็กซี่
+               </button>
+
+               <button type="button" data-toggle="modal" data-target="#myModal" class="bb">
+               <div>
+               <img src="../images/check-in.png" height="60" width="60" >
+               </div><br>
+               การแจ้งออกจากโรงแรม (เช็คเอาท์)
+               </button>
+
+            </div>
+        <?php
+    }else{
+
+        $sql4 = "SELECT * FROM scoreReserve WHERE user_usr = '$use' AND code = '$code' AND score_reserve >= 9";
+        $result4 = mysqli_query($connection,$sql4);
+        $row4 = mysqli_fetch_assoc($result4);
+        
+       if(!$row4){
+           ?>
+         <div class="aa">
+
+        <a href="situation/simple/simple.php" class="card">
         <div>
-        <img src="../images/problem.png" height="60" width="60" >
+        <img src="../images/basic.png" height="60" width="60" >
         </div><br>
-        ปัญหาระหว่างการเข้าพัก
+        ประโยคที่ใช้ในชีวิตประจำวัน
+        </a>
+
+        <a href="situation/reserva/reserva.php" class="card">
+        <div>
+        <img src="../images/resev.png" height="60" width="60" >
+        </div><br>
+        การจองห้องพัก
+        </a>
+
+        <button type="button" data-toggle="modal" data-target="#myModal"  class="bb">
+        <div>
+        <img src="../images/room.png" height="60" width="60" >
+        </div><br>
+        รายละเอียดของห้องพัก
+        </button>
+
+        <button type="button" data-toggle="modal" data-target="#myModal"  class="bb">
+        <div>
+        <img src="../images/checkin.png" height="60" width="60" >
+        </div><br>
+        เช็คอิน
+        </button>
+
+        <button type="button" data-toggle="modal" data-target="#myModal"  class="bb">
+        <div>
+        <img src="../images/hotel.png" height="60" width="60" >
+        </div><br>
+        แนะนำบริการต่างๆ ของโรงแรม
+        </button>
+
+        <button type="button" data-toggle="modal" data-target="#myModal" class="bb">
+               <div>
+               <img src="../images/problem.png" height="60" width="60" >
+               </div><br>
+               ปัญหาระหว่างการเข้าพัก
+               </button>
+
+               <button type="button" data-toggle="modal" data-target="#myModal" class="bb">
+               <div>
+               <img src="../images/data.png" height="60" width="60" >
+               </div><br>
+               การให้ข้อมูลบริการด้านต่างๆ ของโรงแรม
+               </button>
+
+               <button type="button" data-toggle="modal" data-target="#myModal" class="bb">
+               <div>
+               <img src="../images/question.png" height="60" width="60" >
+               </div><br>
+               การสอบถามตำแหน่งสถานที่ และ บริการเรียกรถแท็กซี่
+               </button>
+
+               <button type="button" data-toggle="modal" data-target="#myModal" class="bb">
+               <div>
+               <img src="../images/check-in.png" height="60" width="60" >
+               </div><br>
+               การแจ้งออกจากโรงแรม (เช็คเอาท์)
+               </button>
+
+        
+
+        </div>
+        <?php
+       }else{
+        $sql5 = "SELECT * FROM scoreDetailreserve WHERE user_usr = '$use' AND code = '$code' AND score_detailreserve >= 9";
+        $result5 = mysqli_query($connection,$sql5);
+        $row5 = mysqli_fetch_assoc($result5);
+        //  echo 'จะเปิดอันที่ 3'; 
+         if(!$row5){
+            ?>
+         <div class="aa">
+
+        <a href="situation/simple/simple.php" class="card">
+        <div>
+        <img src="../images/basic.png" height="60" width="60" >
+        </div><br>
+        ประโยคที่ใช้ในชีวิตประจำวัน
+        </a>
+
+        <a href="situation/reserva/reserva.php" class="card">
+        <div>
+        <img src="../images/resev.png" height="60" width="60" >
+        </div><br>
+        การจองห้องพัก
+        </a>
+
+        <a href="situation/detail/detail.php" class="card">
+        <div>
+        <img src="../images/room.png" height="60" width="60" >
+        </div><br>
+        รายละเอียดของห้องพัก
+        </a>
+
+        <button type="button" data-toggle="modal" data-target="#myModal" class="bb">
+        <div>
+        <img src="../images/checkin.png" height="60" width="60" >
+        </div><br>
+        เช็คอิน
         </button>
 
         <button type="button" data-toggle="modal" data-target="#myModal" class="bb">
         <div>
-        <img src="../images/data.png" height="60" width="60" >
+        <img src="../images/hotel.png" height="60" width="60" >
         </div><br>
-        การให้ข้อมูลบริการด้านต่างๆ ของโรงแรม
+        แนะนำบริการต่างๆ ของโรงแรม
         </button>
 
         <button type="button" data-toggle="modal" data-target="#myModal" class="bb">
-        <div>
-        <img src="../images/question.png" height="60" width="60" >
-        </div><br>
-        การสอบถามตำแหน่งสถานที่ และ บริการเรียกรถแท็กซี่
-        </button>
-</div>
+               <div>
+               <img src="../images/problem.png" height="60" width="60" >
+               </div><br>
+               ปัญหาระหว่างการเข้าพัก
+               </button>
 
+               <button type="button" data-toggle="modal" data-target="#myModal" class="bb">
+               <div>
+               <img src="../images/data.png" height="60" width="60" >
+               </div><br>
+               การให้ข้อมูลบริการด้านต่างๆ ของโรงแรม
+               </button>
 
+               <button type="button" data-toggle="modal" data-target="#myModal" class="bb">
+               <div>
+               <img src="../images/question.png" height="60" width="60" >
+               </div><br>
+               การสอบถามตำแหน่งสถานที่ และ บริการเรียกรถแท็กซี่
+               </button>
+
+               <button type="button" data-toggle="modal" data-target="#myModal" class="bb">
+               <div>
+               <img src="../images/check-in.png" height="60" width="60" >
+               </div><br>
+               การแจ้งออกจากโรงแรม (เช็คเอาท์)
+               </button>
+
+        </div>
+        <?php
+         }else{
+            $sql6 = "SELECT * FROM scoreCheckin WHERE user_usr = '$use' AND code = '$code' AND score_checkin >= 8";
+            $result6 = mysqli_query($connection,$sql6);
+            $row6 = mysqli_fetch_assoc($result6);
+            //  echo 'จะเปิดอันที่ 4 , 5'; 
+             if(!$row6){
+                ?>
+                <div class="aa">
+       
+               <a href="situation/simple/simple.php" class="card">
+               <div>
+               <img src="../images/basic.png" height="60" width="60" >
+               </div><br>
+               ประโยคที่ใช้ในชีวิตประจำวัน
+               </a>
+       
+               <a href="situation/reserva/reserva.php" class="card">
+               <div>
+               <img src="../images/resev.png" height="60" width="60" >
+               </div><br>
+               การจองห้องพัก
+               </a>
+       
+               <a href="situation/detail/detail.php" class="card">
+               <div>
+               <img src="../images/room.png" height="60" width="60" >
+               </div><br>
+               รายละเอียดของห้องพัก
+               </a>
+       
+               <a href="situation/checkin/checkin.php" class="card">
+               <div>
+               <img src="../images/checkin.png" height="60" width="60" >
+               </div><br>
+               เช็คอิน
+               </a>
+       
+               <a href="situation/recom/recom.php" class="card">
+               <div>
+               <img src="../images/hotel.png" height="60" width="60" >
+               </div><br>
+               แนะนำบริการต่างๆ ของโรงแรม
+               </a>
+
+               <!-- <button type="button" data-toggle="modal" data-target="#myModal" class="bb">
+               <div>
+               <img src="../images/hotel.png" height="60" width="60" >
+               </div><br>
+               แนะนำบริการต่างๆ ของโรงแรม
+               </button> -->
+
+               <button type="button" data-toggle="modal" data-target="#myModal" class="bb">
+               <div>
+               <img src="../images/problem.png" height="60" width="60" >
+               </div><br>
+               ปัญหาระหว่างการเข้าพัก
+               </button>
+
+               <button type="button" data-toggle="modal" data-target="#myModal" class="bb">
+               <div>
+               <img src="../images/data.png" height="60" width="60" >
+               </div><br>
+               การให้ข้อมูลบริการด้านต่างๆ ของโรงแรม
+               </button>
+
+               <button type="button" data-toggle="modal" data-target="#myModal" class="bb">
+               <div>
+               <img src="../images/question.png" height="60" width="60" >
+               </div><br>
+               การสอบถามตำแหน่งสถานที่ และ บริการเรียกรถแท็กซี่
+               </button>
+
+               <button type="button" data-toggle="modal" data-target="#myModal" class="bb">
+               <div>
+               <img src="../images/check-in.png" height="60" width="60" >
+               </div><br>
+               การแจ้งออกจากโรงแรม (เช็คเอาท์)
+               </button>
+       
+               </div>
+               <?php
+             }else{
+                $sql7 = "SELECT * FROM scoreProblem WHERE user_usr = '$use' AND code = '$code' AND score_problem >= 7";
+                $result7 = mysqli_query($connection,$sql7);
+                $row7 = mysqli_fetch_assoc($result7);
+                if(!$row7){
+                     //  echo 'เปิดอันที่ 6'; 
+                     ?>
+                 <div class="aa">
+       
+                    <a href="situation/simple/simple.php" class="card">
+                    <div>
+                    <img src="../images/basic.png" height="60" width="60" >
+                    </div><br>
+                    ประโยคที่ใช้ในชีวิตประจำวัน
+                    </a>
+
+                    <a href="situation/reserva/reserva.php" class="card">
+                    <div>
+                    <img src="../images/resev.png" height="60" width="60" >
+                    </div><br>
+                    การจองห้องพัก
+                    </a>
+
+                    <a href="situation/detail/detail.php" class="card">
+                    <div>
+                    <img src="../images/room.png" height="60" width="60" >
+                    </div><br>
+                    รายละเอียดของห้องพัก
+                    </a>
+
+                    <a href="situation/checkin/checkin.php" class="card">
+                    <div>
+                    <img src="../images/checkin.png" height="60" width="60" >
+                    </div><br>
+                    เช็คอิน
+                    </a>
+
+                    <a href="situation/recom/recom.php" class="card">
+                    <div>
+                    <img src="../images/hotel.png" height="60" width="60" >
+                    </div><br>
+                    แนะนำบริการต่างๆ ของโรงแรม
+                    </a>
+
+                    <a href="situation/problem/problem.php" class="card">
+                    <div>
+                    <img src="../images/problem.png" height="60" width="60" >
+                    </div><br>
+                    ปัญหาระหว่างการเข้าพัก
+                    </a>
+
+                    <button type="button" data-toggle="modal" data-target="#myModal" class="bb">
+                    <div>
+                    <img src="../images/data.png" height="60" width="60" >
+                    </div><br>
+                    การให้ข้อมูลบริการด้านต่างๆ ของโรงแรม
+                    </button>
+
+                    <button type="button" data-toggle="modal" data-target="#myModal" class="bb">
+                    <div>
+                    <img src="../images/question.png" height="60" width="60" >
+                    </div><br>
+                    การสอบถามตำแหน่งสถานที่ และ บริการเรียกรถแท็กซี่
+                    </button>
+
+                    <button type="button" data-toggle="modal" data-target="#myModal" class="bb">
+                    <div>
+                    <img src="../images/check-in.png" height="60" width="60" >
+                    </div><br>
+                    การแจ้งออกจากโรงแรม (เช็คเอาท์)
+                    </button>
+
+                    </div>
+               <?php
+                }else{
+                $sql8 = "SELECT * FROM scoreData WHERE user_usr = '$use' AND code = '$code' AND score_data >= 7";
+                $result8 = mysqli_query($connection,$sql8);
+                $row8 = mysqli_fetch_assoc($result8);    
+                if(!$row8){
+                //echo 'เปิดอันที่ 7';
+                ?>
+                <div class="aa">
+      
+                   <a href="situation/simple/simple.php" class="card">
+                   <div>
+                   <img src="../images/basic.png" height="60" width="60" >
+                   </div><br>
+                   ประโยคที่ใช้ในชีวิตประจำวัน
+                   </a>
+
+                   <a href="situation/reserva/reserva.php" class="card">
+                   <div>
+                   <img src="../images/resev.png" height="60" width="60" >
+                   </div><br>
+                   การจองห้องพัก
+                   </a>
+
+                   <a href="situation/detail/detail.php" class="card">
+                   <div>
+                   <img src="../images/room.png" height="60" width="60" >
+                   </div><br>
+                   รายละเอียดของห้องพัก
+                   </a>
+
+                   <a href="situation/checkin/checkin.php" class="card">
+                   <div>
+                   <img src="../images/checkin.png" height="60" width="60" >
+                   </div><br>
+                   เช็คอิน
+                   </a>
+
+                   <a href="situation/recom/recom.php" class="card">
+                   <div>
+                   <img src="../images/hotel.png" height="60" width="60" >
+                   </div><br>
+                   แนะนำบริการต่างๆ ของโรงแรม
+                   </a>
+
+                   <a href="situation/problem/problem.php" class="card">
+                   <div>
+                   <img src="../images/problem.png" height="60" width="60" >
+                   </div><br>
+                   ปัญหาระหว่างการเข้าพัก
+                   </a>
+
+                   <a href="situation/data/data.php" class="card">
+                   <div>
+                   <img src="../images/data.png" height="60" width="60" >
+                   </div><br>
+                   การให้ข้อมูลบริการด้านต่างๆ ของโรงแรม
+                   </a>
+
+                   <button type="button" data-toggle="modal" data-target="#myModal" class="bb">
+                   <div>
+                   <img src="../images/question.png" height="60" width="60" >
+                   </div><br>
+                   การสอบถามตำแหน่งสถานที่ และ บริการเรียกรถแท็กซี่
+                   </button>
+
+                   <button type="button" data-toggle="modal" data-target="#myModal" class="bb">
+                   <div>
+                   <img src="../images/check-in.png" height="60" width="60" >
+                   </div><br>
+                   การแจ้งออกจากโรงแรม (เช็คเอาท์)
+                   </button>
+
+                   </div>
+              <?php
+                 }else{
+                $sql9 = "SELECT * FROM scoreLocation WHERE user_usr = '$use' AND code = '$code' AND score_location >= 7";
+                $result9 = mysqli_query($connection,$sql9);
+                $row9 = mysqli_fetch_assoc($result9);    
+                if(!$row9){
+                    //echo 'เปิดอันที่ 8';
+                ?>
+                <div class="aa">
+      
+                   <a href="situation/simple/simple.php" class="card">
+                   <div>
+                   <img src="../images/basic.png" height="60" width="60" >
+                   </div><br>
+                   ประโยคที่ใช้ในชีวิตประจำวัน
+                   </a>
+
+                   <a href="situation/reserva/reserva.php" class="card">
+                   <div>
+                   <img src="../images/resev.png" height="60" width="60" >
+                   </div><br>
+                   การจองห้องพัก
+                   </a>
+
+                   <a href="situation/detail/detail.php" class="card">
+                   <div>
+                   <img src="../images/room.png" height="60" width="60" >
+                   </div><br>
+                   รายละเอียดของห้องพัก
+                   </a>
+
+                   <a href="situation/checkin/checkin.php" class="card">
+                   <div>
+                   <img src="../images/checkin.png" height="60" width="60" >
+                   </div><br>
+                   เช็คอิน
+                   </a>
+
+                   <a href="situation/recom/recom.php" class="card">
+                   <div>
+                   <img src="../images/hotel.png" height="60" width="60" >
+                   </div><br>
+                   แนะนำบริการต่างๆ ของโรงแรม
+                   </a>
+
+                   <a href="situation/problem/problem.php" class="card">
+                   <div>
+                   <img src="../images/problem.png" height="60" width="60" >
+                   </div><br>
+                   ปัญหาระหว่างการเข้าพัก
+                   </a>
+
+                   <a href="situation/data/data.php" class="card">
+                   <div>
+                   <img src="../images/data.png" height="60" width="60" >
+                   </div><br>
+                   การให้ข้อมูลบริการด้านต่างๆ ของโรงแรม
+                   </a>
+
+                   <a href="situation/location/location.php" class="card">
+                   <div>
+                   <img src="../images/question.png" height="60" width="60" >
+                   </div><br>
+                   การสอบถามตำแหน่งสถานที่ และ บริการเรียกรถแท็กซี่
+                   </a>
+
+                   <button type="button" data-toggle="modal" data-target="#myModal" class="bb">
+                   <div>
+                   <img src="../images/check-in.png" height="60" width="60" >
+                   </div><br>
+                   การแจ้งออกจากโรงแรม (เช็คเอาท์)
+                   </button>
+
+                   </div>
+              <?php
+                }else{
+                    //echo 'เปิดอันที่ 9';
+                    ?>
+                    <div class="aa">
+          
+                       <a href="situation/simple/simple.php" class="card">
+                       <div>
+                       <img src="../images/basic.png" height="60" width="60" >
+                       </div><br>
+                       ประโยคที่ใช้ในชีวิตประจำวัน
+                       </a>
+    
+                       <a href="situation/reserva/reserva.php" class="card">
+                       <div>
+                       <img src="../images/resev.png" height="60" width="60" >
+                       </div><br>
+                       การจองห้องพัก
+                       </a>
+    
+                       <a href="situation/detail/detail.php" class="card">
+                       <div>
+                       <img src="../images/room.png" height="60" width="60" >
+                       </div><br>
+                       รายละเอียดของห้องพัก
+                       </a>
+    
+                       <a href="situation/checkin/checkin.php" class="card">
+                       <div>
+                       <img src="../images/checkin.png" height="60" width="60" >
+                       </div><br>
+                       เช็คอิน
+                       </a>
+    
+                       <a href="situation/recom/recom.php" class="card">
+                       <div>
+                       <img src="../images/hotel.png" height="60" width="60" >
+                       </div><br>
+                       แนะนำบริการต่างๆ ของโรงแรม
+                       </a>
+    
+                       <a href="situation/problem/problem.php" class="card">
+                       <div>
+                       <img src="../images/problem.png" height="60" width="60" >
+                       </div><br>
+                       ปัญหาระหว่างการเข้าพัก
+                       </a>
+    
+                       <a href="situation/data/data.php" class="card">
+                       <div>
+                       <img src="../images/data.png" height="60" width="60" >
+                       </div><br>
+                       การให้ข้อมูลบริการด้านต่างๆ ของโรงแรม
+                       </a>
+    
+                       <a href="situation/location/location.php" class="card">
+                       <div>
+                       <img src="../images/question.png" height="60" width="60" >
+                       </div><br>
+                       การสอบถามตำแหน่งสถานที่ และ บริการเรียกรถแท็กซี่
+                       </a>
+    
+                       <a href="situation/out/out.php" class="card">
+                       <div>
+                       <img src="../images/check-in.png" height="60" width="60" >
+                       </div><br>
+                       การแจ้งออกจากโรงแรม (เช็คเอาท์)
+                       </a>
+    
+                       </div>
+                  <?php
+                }
+                 }
+                }                
+             }
+         }
+
+       }
+        
+    }
+}
+
+?>
  </div>
-
- 
  <div class="container">
   <!-- The Modal -->
   <div class="modal" id="myModal">

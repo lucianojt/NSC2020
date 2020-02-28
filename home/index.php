@@ -825,12 +825,8 @@ unset($_SESSION["Index_Tout"]);
 
 ?>
 <!-- เปิดcookie -->
-<?php
-   
-  ?>
 <!doctype html>
 <html lang="en">
-
   <head>
     <title>หน้าหลัก</title>
     <!-- Required meta tags -->
@@ -840,257 +836,302 @@ unset($_SESSION["Index_Tout"]);
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
+    <link rel="icon" href="../images/logoPJ.png" >
     <link rel="stylesheet" href="../style.css">
     <script src="../script.js"></script>
-    <script src="../jquery-3.4.1.min.js"></script>
-    <link rel="icon" href="../images/icon_9.png" >  
 </head>
-  <body>
-<nav class="navbar navbar-expand-lg">
-    <a class="navbar-brand" href="../home/index.php">
-   <img src="../images/icon_9.png" width="40" height="30" class="d-inline-block align-top" alt="">
-</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">CHINY</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <li class="nav-item active">
-            <a class="nav-link" href="../main/situation.php">สถานการณ์ <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item active">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto" style="color: #092E41; font-weight: bold;">
+      <li class="nav-item active">
+          <a class="nav-link" href="../main/situation.php">สถานการณ์ <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
         <a class="nav-link" href="../main/gramma.php">ไวยากรณ์</a>
-        </li>
-        <li class="nav-item active">
+      </li>
+      <li class="nav-item active">
         <a class="nav-link" href="../main/conclude.php">ผลสรุป</a>
-        </li>
-        
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-        <a  class="nav-link" href="../logout.php">ออกจากระบบ </a>
-        </form>
+      </li>
+      </ul>
+      <a class="nav-link" href="../logout.php">ออกจากระบบ</a>
     </div>
-    </nav>
-  <style>
-  
-  body{
-		background-image: url('../images/wall.png');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-
-        /* background-image: url("../images/bg.svg");
-  background-position: center;
-  background-repeat: repeat; */
-  
-  
-		}
-    .navbar{
-        background-color: #660223;
-        /* overflow: hidden;
-        position: fixed; */
-        top: 0;
-        width: 100%;
-    }
-   
-    .nav-link {
-        color: white;
-    }
-    .navbar-toggler{
-        border-color: rgb(255,102,203);
-    }
-    .navbar-toggler-icon{
-        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,102,203, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-    }
-   
-    .text{
-    text-align: center;
-    background-image: url('../images/wallpa.jpg');
-    color: white;
-    height: 80px;
-    padding: 21px; 
-   }
-    .word{
-    color: white;
-    background-color: #AE0F0F;
-    height: 140px;
-    border-radius: 15px;
-    text-align: center;
-    padding: 23px;
-    }
-    .word:hover {
-  background-color: #941414;
-   }
-
-  </style>
-
-<div class="text"><h3>หน้าหลัก</h3></div><br>
+  </nav>
+ 
+<div class="textMain"><p>หน้าหลัก</p></div>
 <?php
-  if($_SESSION["username_user"]==""){
+  if ($_SESSION["username_user"]=="") {
     header("location:../logout.php"); 
     exit();
-  }else{
+  } else {
+    $sqlData = "SELECT * FROM regis_usr WHERE user_usr = '$user'";
+    $resultData = mysqli_query($connection,$sqlData);
+    $rowData = mysqli_fetch_assoc($resultData);
+    $FistName =  $rowData['name_usr'];
+    $LastName =  $rowData['lname_usr'];
+    $imgName =  $rowData['pic_usr'];
+    $sqlHotel = "SELECT * FROM regis_hr WHERE code = '$code'";
+    $resultHotel = mysqli_query($connection,$sqlHotel);
+    $rowHotel = mysqli_fetch_assoc($resultHotel);
+    $nameHotel = $rowHotel['NHo_hr'];
+    $ProHotel = $rowHotel['pro_hr'];
+    $dHotel = $rowHotel['dt_hr'];
 ?>
-<div class="container" style=" text-align: center;">
-
-<h4>ห้อง: <?php echo $code." ชื่อผู้ใช้: ".$user ;?></h4>
+<div class="container">
+  <div class="roomDetail">
+    <div class="img">
+      <img class="picUser" src="../images/userpic/<?php echo $imgName;?>" alt="">
+      <div class="nameUser">
+        <p class="nameUserDetail"><?php echo $FistName.'  '.$LastName; ?></p>
+        <p class="nameUserDetail" >ห้อง: <?php echo $code." ชื่อผู้ใช้: ".$user ;?></p>
+      </div>
+    </div>
+    <div class="detailhotel">
+      <!-- <p style="margin: 0 20px 0 0">โรงแรม</p> -->
+      <p style="margin: 3px 0"><?php echo $nameHotel.' จังหวัด '.$ProHotel.' อำเภอ '.$dHotel;?></p>
+    </div>
+  </div>
 </div>
 
 <div class="container">
-<div class="jumbotron" style="background-color:rgba(231, 200, 211, 0.2)">
-  
-
-<div class="container">
-  <div class="row">
-    <div class="col">
+  <div class="rowOne">
+    <div class="situation">
       <a href="../main/situation.php" role="button">
         <div class="word">
         <img src="../images/home/situation.png" style="width: 61px; height: 61px;">
-        <p>สถานการณ์</p>
+        <p class="textWords">สถานการณ์</p>
         </div>
         </a>
       <br>
     </div>
-    <div class="col">
+    <div class="situation">
         <a href="../main/gramma.php" role="button">
           <div class="word">
           <img src="../images/home/gramma1.png" style="width: 61px; height: 61px;">
-          <p>ไวยากรณ์</p>
+          <p class="textWords">ไวยากรณ์</p>
           </div>
           </a>
         <br>
     </div>
   </div>
-  <div class="row">
-    <div class="col">
+  <div class="rowTwo">
+    <div class="situation">
       <a href="../main/conclude.php" role="button">
         <div class="word">
         <img src="../images/home/Picture1.png" style="width: 61px; height: 61px;">
-        <p>ผลสรุป</p>
+        <p class="textWords">ผลสรุป</p>
         </div>
         </a>
       <br>
     </div>
-    <div class="col">
-
-
+    <div class="situation">
     <?php
-     $sql2 = "SELECT * FROM scoreOut WHERE user_usr = '$user' AND code = '$code' AND score_out >= 6";
-     $result2 = mysqli_query($connection,$sql2);
-     $row2 = mysqli_fetch_assoc($result2);
-     if(!$row2){
+    $sql2 = "SELECT * FROM scoreOut WHERE user_usr = '$user' AND code = '$code' AND score_out >= 6";
+    $result2 = mysqli_query($connection,$sql2);
+    $row2 = mysqli_fetch_assoc($result2);
+    if(!$row2){
       
       ?>
-      <div class="bb" data-toggle="modal" data-target="#myModal" >
-
-        
+      <div class="bb" style="cursor: no-drop;" data-toggle="modal" data-target="#myModal" >
             <div >
             <img src="../images/home/test.png" style="width: 61px; height: 61px;">
+              <p class="textWords">แบบทดสอบ</p>
             </div>
-            แบบทดสอบ
-           
       </div>
-       
       <?php
-     }else{
-       ?>
+    }else {
+      ?>
         <a href="../main/posttest.php" role="button">
           <div class="word">
           <img src="../images/home/test.png" style="width: 61px; height: 61px;">
-          <p>แบบทดสอบ</p>
+            <p class="textWords">แบบทดสอบ</p>
           </div>
           </a>
-       <?php
-     }
+      <?php
+    }
     ?>
         <br>
     </div>
 
-    <div class="container">
-  <!-- The Modal -->
   <div class="modal" id="myModal">
     <div class="modal-dialog">
       <div class="modal-content">
-      
-        <!-- Modal Header -->
-        <div class="header bg-danger" style="height: 50px; ">
-            <p class="p">คำเตือน !</p>
+        <div class="header">
+            <p class="warnmimg">คำเตือน !</p>
         <h4 class="modal-title"></h4>
         </div>
-        
-        <!-- Modal body -->
-            <div class="ll" >
-       
-        <h5>ขออภัยแบบทดสอบยังไม่เปิด</h5>
-
-            </div>
-            
-        <!-- Modal footer -->
-          <div class="modal-footer" style="height: 60px;">
-          <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="javascript:window.close()">ปิด</button>
+          <p class="stuation">ขออภัยแบบทดสอบยังไม่เปิด</p>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-warning" data-dismiss="modal" onclick="javascript:window.close()">ปิด</button>
         </div>
-        </div>
-        
       </div>
     </div>
   </div>
 
   </div>
 </div>
-
-</div>
-</div>
-<style>
-  .p{
-    margin-top: 6px;
-    padding: 1%;
-    text-align: center;
-    font-size: 20px;
-}
-  .k{
-    background-color: #848787; 
-    border-style: none;
-  }
-  .ll{
-    margin-top: 19px;
-   height: 50px; 
-  }
-.bb{
-    color: white;
-    background-color: #848787;
-    height: 140px;
-    border-radius: 15px;
-    text-align: center;
-    padding: 23px;
-    }
-    .modal-content{
-    margin-top: 50%;
-    text-align: center;
-
-}
-.modal-header{
-    text-align: center;
-}
-</style>
 <?php
-    mysqli_close($connection);
+  mysqli_close($connection);
   }
-
-  ?>
+?>
 <!-- ปิด cookie -->
 <?php
-
  }else{
-    header("location:../logout.php");
- }
+  header("location:../logout.php");
+}
+include('../footer.php');
+ob_end_flush();
 ?>
-<!-- <script>
-$(function(){
-$('#test').slideUp(1000).slideDown(1000);
-});
-</script> -->
-  <?php
-  include('../footer.php');
-  ob_end_flush();
-  ?>
-    
+<style>
+body {
+  background: #e4cbd3;
+}
+.material-icons {
+  position: absolute;
+}
+.nav-link {
+  color: black;
+}
+.navbar {
+  background-color: #e4cbd3 !important;
+  font-size: 18px;
+  position: sticky;
+  top: 0;
+}
+.active {
+  transition: opacity 0.2s;
+}
+.navbar-collapse:hover .active:not(:hover) {
+  opacity: 0.5;
+}
+.textMain {
+  letter-spacing: 2px;
+  color: #551524;
+  font-size: 45px;
+  width: 200px;
+  margin: 0 auto;
+}
+.rowOne {
+  display: flex;
+  width: 100%;
+}
+.rowTwo {
+  display: flex;
+  width: 100%;
+}
+.situation {
+  width: 50%;
+  margin: 0 20px 0 0;
+  font-size: 18px;
+}
+.roomDetail {
+  background: #ba748b;
+  border-radius: 6px;
+  padding: 20px 20px;
+  margin: 20px 0 20px;
+  color: #2C1404;
+  font-size: 20px;
+}
+.img {
+  display: flex;
+}
+.detailhotel {
+  border-top: 1.5px solid #CBCBCB;
+  display: flex;
+  margin: 20px 0 0;
+  padding: 20px 0 0;
+}
+.textWords {
+  margin: 10px 0 0;
+}
+.picUser {
+  width: 10%;
+  height: auto;
+  border-radius: 12%;
+  margin: 0 17px 0 0;
+}
+@media (max-width: 575.98px) {
+  .picUser {
+    width: 26%;
+  }
+  .textMain {
+    letter-spacing: 2px;
+    font-size: 40px;
+  }
+}
+.nameUserDetail {
+  margin: 0;
+}
+.word{
+  color: white;
+  background: #7e1f35;
+  height: 140px;
+  border-radius: 5px;
+  text-align: center;
+  padding: 23px;
+  position: relative;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.word:hover {
+  background: #551524;
+  animation-name: example;
+  animation-duration: 0.6s;
+}
+@keyframes example {
+  0% {
+    left: 0%;
+  }
+  50% {
+    left: 2%;
+  }
+  75% {
+    left: -2%;
+  }
+  100% {
+    left: 0%;
+  }
+}
+.bb {
+  color: white;
+  opacity: 0.7;
+  background-color: #551524;
+  height: 140px;
+  border-radius: 4px;
+  text-align: center;
+  padding: 23px 0 0;
+  cursor: pointer;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.modal-content {
+  margin-top: 50%;
+  text-align: center;
+}
+.modal-header {
+  text-align: center;
+}
+.modal-content {
+  border-radius: 8px;
+}
+.warnmimg {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  background: #562535;
+  color: white;
+  padding: 12px 0;
+  font-size: 30px;
+}
+.modal-footer {
+  padding: 10px;
+}
+.btn-warning {
+  width: 82px;
+}
+.stuation {
+  font-size: 20px;
+  padding: 12px 0;
+}
+</style>

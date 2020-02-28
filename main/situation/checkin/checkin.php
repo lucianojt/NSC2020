@@ -1,28 +1,12 @@
 <?php 
 ob_start();
 session_start();
-
 if(isset($_COOKIE["user"])){
 include("../../../database/database.php"); 
 $connection = mysqli_connect($localhost,$username,$pass,$database);
 mysqli_set_charset($connection,'utf8');
 $user = $_SESSION["username_user"];
 $code = $_SESSION["pincode"];
-// if(!isset($_SESSION["SimWord_Tin"])){
-//     $_SESSION["SimWord_Tin"] = 0;    
-// }
-// else {
-//     var_dump($_SESSION["SimWord_Tin"]);
-// }
-
-// check score ของ score_detailreserve ถ้ามีการทำแบบทดสอบจะเข้า checkin ได้
-// $sql11 = "SELECT * FROM scoreDetailreserve WHERE user_usr = '$user' AND code = '$code' AND score_detailreserve >=6 ";
-// $result11 = mysqli_query($connection,$sql11);
-// $row11 = mysqli_fetch_assoc($result11);    
-// if(!$row11){ 
-//     header("location:../../situation.php"); 
-// }else{
-
 date_default_timezone_set('Asia/Bangkok');
 $Checkin_Dout = date("d-m-Y");
 $Checkin_Tout = date("H:i:s");
@@ -171,122 +155,51 @@ unset($_SESSION["Checkin_Tout"]);
   <head>
     <title>การเช็คอิน</title>
     <?php include("../headU.php"); ?>
-
-        <style>
-    .navbar{
-        background-color: #660223;
-        
-    }
-    .navbar-brand {
-        color: white;
-    }
-    .navbar-nav .nav-link {
-        color: white;
-    }
-    .navbar-toggler{
-        border-color: rgb(255,102,203);
-    }
-    .navbar-toggler-icon{
-        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,102,203, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-    }
-    .btn {
-    color: white;
-    background-color: #AE0F0F;
-    width: 80%;
-    text-align: left;
-    }  
-    .word{
-        height: 65px;
-        padding: 13px; 
-        word-spacing: 0.5cm; 
-       font-size: 20px;
-      
-    }
-    .btn:hover {
-  background-color: #941414;
-   }
-   .gu{
-    text-align: center;
-    /* padding-left: 10px; */
-   }
-   body{
-		background-image: url('../../../images/wall.png');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-		}
-        .text{
-    text-align: center;
-    background-image: url('../../../images/wallpa.jpg');
-    color: white;
-    height: 80px;
-    padding: 21px; 
-   }
-    </style>
-   
-   <!-- start -->
-   <div class="text"><h3>การเช็คอิน</h3></div><br>
+   <div class="text"><p>การเช็คอิน</p></div>
    <div class="container">
-   
-    <h6><a href="../../../home/index.php" class="text-reset">หน้าหลัก</a> > <a href="../../situation.php" class="text-reset">สถานการณ์</a> > การเช็คอิน</h6>
-   </div>
-   <div class="gu">
-    <br><div class="container">
-   
-    
-    <!-- <br> -->
+  <h5 style="margin: 20px 0"><a href="../../../home/index.php" class="text-reset">หน้าหลัก</a> > <a href="../../situation.php" class="text-reset">สถานการณ์</a> > <a href="checkin.php" class="text-reset">การเช็คอิน</a></h5>
+  </div>
+  <div class="gu">
+    <div class="container">
     <a class="btn" href="word.php" role="button">
-    <div class="word">
-    <img src="../../../images/situation/word.png" style="width: 40px; height: 40px;">
-    คำศัพท์
-    </div>
+      <div class="word">
+      <img src="../../../images/situation/word.png" style="width: 40px; height: 40px;">
+      คำศัพท์
+      </div>
     </a>
     <br><br>
     <a class="btn" href="sentence.php" role="button">
-    <div class="word">
-    <img src="../../../images/situation/senten.png" style="width: 40px; height: 40px;">
-    ประโยค
-    </div>
+      <div class="word">
+      <img src="../../../images/situation/senten.png" style="width: 40px; height: 40px;">
+      ประโยค
+      </div>
     </a>
     <br><br>
     <a class="btn" href="conversation.php" role="button">
-    <div class="word">
-    <img src="../../../images/situation/conver.png" style="width: 40px; height: 40px;">
-    บทสนทนา
-    </div>
+      <div class="word">
+      <img src="../../../images/situation/conver.png" style="width: 40px; height: 40px;">
+      บทสนทนา
+      </div>
     </a>
     <br><br>
     <a class="btn" href="exer_checkin.php" role="button">
-    <div class="word">
-    <img src="../../../images/situation/test.png" style="width: 40px; height: 40px;">
-    แบบฝึกหัด
-    </div>
+      <div class="word">
+      <img src="../../../images/situation/test.png" style="width: 40px; height: 40px;">
+      แบบฝึกหัด
+      </div>
     </a>
-    
-    
-    
     </div>
-    </div>
+  </div>
    <div class="container">
     </div><br>
-    <div class="text-center" style="color: red;"><h6><a href="../../situation.php" class="text-reset"> << กลับไปหน้าสถานการณ์ </a> </h6></div>
-    
-
-
-
+    <div class="text-center" style="color: red;"><h6><a href="../../situation.php" class="texts-reset"> << กลับไปหน้าสถานการณ์ </a> </h6></div>
 <!-- ปิด cookie -->
-
 <?php
-// check คะแนน
-//}
-// check $_COOKIE["user"]
-}else{
-   header("location:../../../logout.php");
+} else {
+  header("location:../../../logout.php");
 }
 ob_end_flush();
 ?>
-
-
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -294,3 +207,62 @@ ob_end_flush();
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
 </html>
+
+<style>
+.btn {
+  color: white;
+  /* background-color: #75394d; */
+  background-color: #7e1f35;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 80%;
+  text-align: left;
+  position: relative;
+}
+.btn:hover {
+  background-color: #551524;
+  /* background-color: #562535; */
+  color: white;
+  animation-name: example;
+  animation-duration: 0.6s;
+}
+@keyframes example {
+  0% {
+    left: 0%;
+  }
+  50% {
+    left: 2%;
+  }
+  75% {
+    left: -2%;
+  }
+  100% {
+    left: 0%;
+  }
+}
+.word {
+  height: 65px;
+  padding: 13px; 
+  word-spacing: 0.5cm; 
+  font-size: 20px;
+}
+.gu {
+  text-align: center;
+}
+.text {
+  letter-spacing: 2px;
+  font-size: 40px;
+  text-align: center;
+  color: #551524;
+}
+@media (max-width: 575.98px) {
+  .text-reset {
+    font-size: 17px;
+  }
+  .btn {
+    width: 100%;
+  }
+}
+.texts-reset {
+  color: black;
+}
+</style>

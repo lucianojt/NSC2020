@@ -97,6 +97,16 @@ body {
   animation-name: example;
   animation-duration: 1.1s;
 }
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .card {
+    width: 60%;
+  }
+}
+@media (min-width: 1200px) {
+  .card {
+    width: 55%;
+  }
+}
 @keyframes example {
   0% {
     top: 0%;

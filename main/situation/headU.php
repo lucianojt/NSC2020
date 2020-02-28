@@ -1,5 +1,3 @@
-<?php
-echo '
 <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,36 +8,46 @@ echo '
     <link rel="stylesheet" href="../../../style.css">
     <script type="text/javascript" src="../../../jquery-3.4.1.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <link rel="icon" href="../../../images/icon_9.png" >
+    <link rel="icon" href="../../../images/logoPJ.png" >
   </head>
   <body>
-  <nav class="navbar navbar-expand-lg">
-    <a class="navbar-brand" href="../../../home/index.php">
-   <img src="../../../images/icon_9.png" width="40" height="30" class="d-inline-block align-top" alt="">
-</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+ <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="../../../home/index.php">CHINY</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <li class="nav-item active">
-            <a class="nav-link" href="../../situation.php">สถานการณ์ <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item active">
-        <a class="nav-link" href="../../gramma.php">ไวยากรณ์</a>
-        </li>
-        <li class="nav-item active">
-        <a class="nav-link" href="../../conclude.php">ผลสรุป</a>
-        </li>
-       
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-        <a  class="nav-link" href="../../../logout.php">ออกจากระบบ </a>
-        </form>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+          <a class="nav-link" href="../../../main/situation.php">สถานการณ์ <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="../../../main/gramma.php">ไวยากรณ์</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="../../../main/conclude.php">ผลสรุป</a>
+      </li>
+      </ul>
+      <a class="nav-link" href="../../../logout.php">ออกจากระบบ</a>
     </div>
-    </nav>
-
-
-
-';
-?>
+  </nav>
+<style>
+body {
+  background: #e4cbd3;
+}
+.nav-link {
+  color: black;
+}
+.navbar{
+  background-color: #e4cbd3 !important;
+  font-size: 18px;
+  position: sticky;
+  top: 0;
+}
+.active {
+  transition: opacity 0.2s;
+}
+.navbar-collapse:hover .active:not(:hover) {
+  opacity: 0.5;
+}
+</style>
