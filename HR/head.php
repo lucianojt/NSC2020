@@ -32,19 +32,13 @@
   </nav>
 <style>
 body {
-  background: #F5F5F5;
-}
-.bg-light {
-  background-color: #F5F5F5!important;
-}
-.material-icons {
-  position: absolute;
+  background: #FFEEEB;
 }
 .nav-link {
   color: black;
 }
 .navbar{
-  background-color: #F5F5F5;
+  background-color: #e4cbd3 !important;
   font-size: 18px;
   position: sticky;
   top: 0;

@@ -26,11 +26,11 @@ mysqli_set_charset($connection,'utf8');
         $_SESSION["code"] = $row["code"];
       ?>
       </div>
-      <div class="text"><h3>จัดการห้อง</h3></div>
+      <div class="text"><p>จัดการห้อง</p></div>
       <div class="container">
       <div class="roomDetail">
-        <span style="margin: 0 10px 0 0">ชื่อ</span><span style="color: #4B4B4B;"><?php echo $row['name_hr'].' '.$row['lname_hr'];?></span><br>
-        <sapn style="margin: 0">โรงแรม</sapn> <span style="color: #4B4B4B;" ><?php echo $row['NHo_hr'].' จังหวัด '.$row['pro_hr'].' อำเภอ '.$row['dt_hr'];?></span>
+        <span style="margin: 0 10px 0 0">ชื่อ</span><span><?php echo $row['name_hr'].' '.$row['lname_hr'];?></span><br>
+        <sapn style="margin: 0">โรงแรม</sapn> <span><?php echo $row['NHo_hr'].' จังหวัด '.$row['pro_hr'].' อำเภอ '.$row['dt_hr'];?></span>
       </div>
 <div class="row">
     <div class="col">
@@ -73,8 +73,8 @@ mysqli_set_charset($connection,'utf8');
     </div>
 </div>
     <a href="data_situation.php" role="button">
-    <div class="test">
-    <p>ข้อมูลสถานการณ์</p>
+    <div class="word">
+    <p style="font-size: 18px; margin: 0">ข้อมูลสถานการณ์</p>
     </div>
     </a><br>
       </div>
@@ -95,35 +95,52 @@ ob_end_flush();?>
 
 <style>
 .text{
+  padding: 16px 0 0;
+  letter-spacing: 2px;
+  font-size: 40px;
   text-align: center;
-  padding: 21px 0 0;
+  color: #551524;
 }
 .titleName {
-  margin: 10px 0;
+  margin: 20px 0 0;
+  font-size: 18px;
 }
 .word {
-  color: white;
-  background-color: #AE0F0F;
-  height: 140px;
-  border-radius: 15px;
+  position: relative;
+  padding: 20px 0;
+  background: #7e1f35;
   text-align: center;
-  padding: 16px 0;
-  font-size: 18px;
+  color: white;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .word:hover {
-  background-color: #941414;
-}
-.test {
+  background-color: #551524;
   color: white;
-  background-color: #AE0F0F;
-  border-radius: 15px;
-  height: 70px;
-  text-align: center;
-  padding: 20px 0;
-  font-size: 18px;
+  animation-name: example;
+  animation-duration: 0.6s;
+}
+@keyframes example {
+  0% {
+    left: 0%;
+  }
+  50% {
+    left: 2%;
+  }
+  75% {
+    left: -2%;
+  }
+  100% {
+    left: 0%;
+  }
+}
+@media (max-width: 575.98px) {
+  .word {
+    height: 86%;
+  }
 }
 .roomDetail {
-  background-color: #E4E4E4;
+  background-color: #e4cbd3;
   border-radius: 6px;
   padding: 20px 20px;
   margin: 20px 0 20px;

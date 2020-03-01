@@ -226,7 +226,7 @@ body {
   border-radius: 10px 30px;
 }
 .floorTime {
-  background: #FFCE95;
+  background: #e4cbd3;
 }
 .table {
   text-align: center;

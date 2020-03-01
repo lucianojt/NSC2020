@@ -255,109 +255,111 @@ if(!$row){
           if(!$result10){
               echo 'เกิดบางอย่างผิดผลาด';
           }else{
-          $row1011 = mysqli_num_rows($result10); 
-          while( $row10 = mysqli_fetch_assoc($result10)){
-          //   echo $row3['score_out'];
-              $scoreOut[] = $row10['score_out'];
-          }
-          $ssss = max($scoreOut);
-          // var_dump($score);
+            $row1011 = mysqli_num_rows($result10); 
+            while( $row10 = mysqli_fetch_assoc($result10)){
+            //   echo $row3['score_out'];
+                $scoreOut[] = $row10['score_out'];
+            }
+            $ssss = max($scoreOut);
+            // var_dump($score);
           }
           }
           //สิ้นสุดการเก็บคะแนนของการแจ้งออกจากโรงแรม (เช็คเอาท์)
         ?>
          <p style="color: red; font-weight:bold;">เกณฑ์การวัดระดับ</p>
-    <table class="table">
-    <thead class="thead" style="color: #660223;">
-        <tr>
-        <th style="width: 40%;" scope="col">สถานการณ์</th>
-        <th class="cent" scope="col">เกณฑ์</th>
-        <th class="cent" scope="col">คะแนนที่ได้(มากที่สุด)</th>
-        <th class="cent" scope="col">จำนวนครั้งที่ทำแบบทดสอบ</th>
-        <th class="cent" scope="col">กราฟ</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-        <th scope="row" style="color: #660223;">เช็คอิน</th>
-        <?php if(!$row61){
-          ?>
+    <div class="table-responsive">
+      <table class="table">
+        <thead class="thead" style="color: #660223;">
+            <tr>
+            <th style="width: 40%;" scope="col">สถานการณ์</th>
+            <th class="cent" scope="col">เกณฑ์</th>
+            <th class="cent" scope="col">คะแนนที่ได้(มากที่สุด)</th>
+            <th class="cent" scope="col">จำนวนครั้งที่ทำแบบทดสอบ</th>
+            <th class="cent" scope="col">กราฟ</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <th scope="row" style="color: #660223;">เช็คอิน</th>
+            <?php if(!$row61){
+              ?>
+              <td class="cent">-</td>
           <td class="cent">-</td>
-      <td class="cent">-</td>
-      <td class="cent">-</td>
-      <td class="cent">-</td>
-      <?php
-      } else {
-        if( $sc >=0 AND $sc <= 9 ){
-        ?>
-          <td class="cent">พอใช้</td>
-          <td class="cent"><?php echo $sc."/12";?></td>
-          <td class="cent"><?php echo $row611." ครั้ง";?></td>
-          <?php
-        }elseif($sc >9 AND $sc < 12){
-         ?>
-          <td class="cent">ดี</td>
-          <td class="cent"><?php echo $sc."/12";?></td>
-          <td class="cent"><?php echo $row611." ครั้ง";?></td>
-      <?php
-        }elseif($sc >=12){
-        ?>
-        <td class="cent">ดีมาก</td>
-        <td class="cent"><?php echo $sc."/12";?></td>
-        <td class="cent"><?php echo $row611." ครั้ง";?></td>
-      <?php
-       }
-       ?>
-        <td class="cent">
-          <button type="button" class="btn btn-info" data-toggle="modal" data-target="#checkin">
-          ดูกราฟ
-         </button>
-        </td>
-       <?php
-      }
-      ?>  
-    </tr>
-    <tr>
-        <th scope="row" style="color: #660223;">การแจ้งออกจากโรงแรม (เช็คเอาท์)</th>
-        <?php if(!$row101){
-          ?>
           <td class="cent">-</td>
-      <td class="cent">-</td>
-      <td class="cent">-</td>
-      <td class="cent">-</td>
+          <td class="cent">-</td>
           <?php
-      }else{
-        if( $ssss >=0 AND $ssss <= 6 ){
+          } else {
+            if( $sc >=0 AND $sc <= 9 ){
             ?>
-      <td class="cent">พอใช้</td>
-      <td class="cent"><?php echo $ssss."/10";?></td>
-      <td class="cent"><?php echo $row1011." ครั้ง";?></td>
-      <?php
-       }elseif($ssss >6 AND $ssss < 8){
-         ?>
-        <td class="cent">ดี</td>
-        <td class="cent"><?php echo $ssss."/10";?></td>
-        <td class="cent"><?php echo $row1011." ครั้ง";?></td>
-      <?php
-       }elseif($ssss >=8  ){
-         ?>
-        <td class="cent">ดีมาก</td>
-        <td class="cent"><?php echo $ssss."/10";?></td>
-        <td class="cent"><?php echo $row1011." ครั้ง";?></td>
-      <?php
-       }
-       ?>
-        <td class="cent">
-          <button type="button" class="btn btn-info" data-toggle="modal" data-target="#checkout">
-            ดูกราฟ
-          </button>
-        </td>
-       <?php
-      }
-      ?>  
-    </tr>
-    </tbody>
-    </table>
+              <td class="cent">พอใช้</td>
+              <td class="cent"><?php echo $sc."/12";?></td>
+              <td class="cent"><?php echo $row611." ครั้ง";?></td>
+              <?php
+            }elseif($sc >9 AND $sc < 12){
+            ?>
+              <td class="cent">ดี</td>
+              <td class="cent"><?php echo $sc."/12";?></td>
+              <td class="cent"><?php echo $row611." ครั้ง";?></td>
+          <?php
+            }elseif($sc >=12){
+            ?>
+            <td class="cent">ดีมาก</td>
+            <td class="cent"><?php echo $sc."/12";?></td>
+            <td class="cent"><?php echo $row611." ครั้ง";?></td>
+          <?php
+          }
+          ?>
+            <td class="cent">
+              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#checkin">
+              ดูกราฟ
+            </button>
+            </td>
+          <?php
+          }
+          ?>  
+          </tr>
+          <tr>
+              <th scope="row" style="color: #660223;">การแจ้งออกจากโรงแรม (เช็คเอาท์)</th>
+              <?php if(!$row101){
+                ?>
+                <td class="cent">-</td>
+            <td class="cent">-</td>
+            <td class="cent">-</td>
+            <td class="cent">-</td>
+                <?php
+            }else{
+              if( $ssss >=0 AND $ssss <= 6 ){
+                  ?>
+            <td class="cent">พอใช้</td>
+            <td class="cent"><?php echo $ssss."/10";?></td>
+            <td class="cent"><?php echo $row1011." ครั้ง";?></td>
+            <?php
+            }elseif($ssss >6 AND $ssss < 8){
+              ?>
+              <td class="cent">ดี</td>
+              <td class="cent"><?php echo $ssss."/10";?></td>
+              <td class="cent"><?php echo $row1011." ครั้ง";?></td>
+            <?php
+            }elseif($ssss >=8  ){
+              ?>
+              <td class="cent">ดีมาก</td>
+              <td class="cent"><?php echo $ssss."/10";?></td>
+              <td class="cent"><?php echo $row1011." ครั้ง";?></td>
+            <?php
+            }
+            ?>
+              <td class="cent">
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#checkout">
+                  ดูกราฟ
+                </button>
+              </td>
+            <?php
+            }
+            ?>  
+          </tr>
+        </tbody>
+      </table>
+    </div>
         <?php
     }
 }
@@ -455,8 +457,8 @@ var ctx = document.getElementById('chart-checkin').getContext('2d');
           labels: <?=json_encode($countTestCheckin)?>,
           datasets: [{
               label: 'คะแนนแต่ละรอบ',
-              backgroundColor: 'rgba(255, 0, 0, 0.2)',
-              borderColor: 'rgba(255, 0, 0, 0.2)',
+              backgroundColor: '#5ba8a0',
+              borderColor: '#385284',
               data: <?=json_encode($g_scoreCheckin)?>
           }]
       },
@@ -479,8 +481,8 @@ var ctx = document.getElementById('chart-checkout').getContext('2d');
           labels: <?=json_encode($countTestCheckout)?>,
           datasets: [{
               label: 'คะแนนแต่ละรอบ',
-              backgroundColor: 'rgba(255, 0, 0, 0.2)',
-              borderColor: 'rgba(255, 0, 0, 0.2)',
+              backgroundColor: '#5ba8a0',
+              borderColor: '#385284',
               data: <?=json_encode($g_scoreCheckout)?>
           }]
       },
