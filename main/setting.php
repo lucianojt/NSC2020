@@ -1,7 +1,6 @@
 <?php 
 ob_start();
 if(isset($_COOKIE["user"])){
-    
 session_start(); 
 include("../database/database.php"); 
 $connection = mysqli_connect($localhost,$username,$pass,$database);
@@ -12,56 +11,12 @@ mysqli_set_charset($connection,'utf8');
   <head>
     <title>แก้ไขข้อมูล</title>
     <?php include("headU.php"); ?>
-
-        <style>
-    body {
-        background-image: url('../images/wall.png');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-       
-        }
-    .navbar{
-        background-color: #660223;
-        /* overflow: hidden;
-        position: fixed;
-        top: 0;
-        width: 100%; */
-    }
-   
-  .nav-link {
-        color: white;
-    }
-    .navbar-toggler{
-        border-color: rgb(255,102,203);
-    }
-    .navbar-toggler-icon{
-        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,102,203, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-    }
-    .main {
-        text-align: center;
-    background-image: url('../images/wallpa.jpg');
-    color: white;
-    height: 80px;
-    padding: 21px; 
-    }
-
-    .table{
-        background-color: #DEDADB;
-    }
-
-   
-    </style>
-   
-
    <div class="main">
-    <h3>แก้ไขข้อมูล</h3>
-    </div><br>
-  
-  
+    <p>แก้ไขข้อมูล</p>
+    </div>
     <div class="container">
     <div class="link">
-        <h6><a href="../home/index.php" class="text-reset">หน้าหลัก</a> > <a href="conclude.php" class="text-reset">ผลสรุป</a> > แก้ไขข้อมูล</h6>
+        <h5><a href="../home/index.php" class="text-reset">หน้าหลัก</a> > <a href="conclude.php" class="text-reset">ผลสรุป</a> > แก้ไขข้อมูล</h5>
    </div><br>
 <!-- close container -->
    </div>
@@ -79,7 +34,7 @@ if(!$result){
 ?>
 <div class="container">
 
-<div class="jumbotron jumbotron-fluid" style="background-color:#ECDEE3">
+<div class="jumbotron jumbotron-fluid">
 
             <div class="container">
                <form action="update_data.php" method="get">
@@ -123,10 +78,7 @@ if(!$result){
 <?php
 }
 ?>
-
-    <div class="text-center" style="color: red;"><h6><a href="../home/index.php" class="text-reset"> << กลับไปหน้าหลัก </a> </h6></div>
-    
-    
+  <div class="backLink"><h6><a href="../home/index.php" class="text-reset"> << กลับไปหน้าหลัก </a> </h6>
 </div>
 
 
@@ -161,3 +113,23 @@ ob_end_flush();
         password.onchange = validatePassword;
         confirm_password.onkeyup = validatePassword;
 </script>
+<style>
+.main {
+  padding: 16px 0 0;
+  letter-spacing: 2px;
+  font-size: 40px;
+  text-align: center;
+  color: #551524;
+}
+.backLink {
+  margin: 20px 0;
+  text-align: center;
+}
+.text-reset {
+  font-size: 18px;
+}
+.jumbotron.jumbotron-fluid {
+  background-color:#e4cbd3;
+  padding: 20px 0;
+}
+</style>

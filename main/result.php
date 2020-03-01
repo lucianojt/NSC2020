@@ -5,6 +5,9 @@ session_start();
 include("../database/database.php"); 
 $connection = mysqli_connect($localhost,$username,$pass,$database);
 mysqli_set_charset($connection,'utf8');
+$room = $_SESSION["pincode"];
+$name = 'Room_'.$room;
+$userr = $_SESSION["username_user"];
 ?>
 <!doctype html>
 <html lang="en">
@@ -12,27 +15,16 @@ mysqli_set_charset($connection,'utf8');
     <title>คะแนนการทดสอบ</title>
     <?php include("headU.php"); ?>
    <div class="main">
-    <h3>ผลสรุป</h3>
+    <p>คะแนนการทดสอบ</p>
     </div>
     <div class="container">
     <div class="link">
-        <h6><a href="../home/index.php" class="text-reset">หน้าหลัก</a> > <a href="conclude.php" class="text-reset">ผลสรุป</a> > คะแนนการทดสอบ</h6>
+        <h5><a href="../home/index.php" class="text-reset">หน้าหลัก</a> > <a href="conclude.php" class="text-reset">ผลสรุป</a> > คะแนนการทดสอบ</h5>
    </div><br>
-
-
-
    <div class="aa">
         <p>ทดสอบก่อนเรียน</p>
    </div> 
    <?php 
-  
-
-   $room = $_SESSION["pincode"];
-   $name = 'Room_'.$room;
-   $userr = $_SESSION["username_user"];
-
-   
-
    $sql = "SELECT * FROM $name WHERE user_usr = '$userr'";
    $result = mysqli_query($connection,$sql); 
 
@@ -137,7 +129,7 @@ mysqli_set_charset($connection,'utf8');
           
           ?>
          <?php
-      }else{
+      } else{
       echo 'คุณยังไม่ได้ทำแบบทดสอบ';
       }
 
@@ -145,7 +137,7 @@ mysqli_set_charset($connection,'utf8');
     <!-- close container -->
     </div>
     <br>
-    <div class="text-center" style="color: red;"><h6><a href="../home/index.php" class="text-reset"> << กลับไปหน้าหลัก </a> </h6></div>
+  <div class="backLink"><h6><a href="../home/index.php" class="text-reset"> << กลับไปหน้าหลัก </a> </h6>
   <!-- ปิด cookie -->
 
 <?php
@@ -172,10 +164,10 @@ var myChart = new Chart(ctx, {
             label: 'ผลคะแนนทดสอบก่อนเรียน',
             data: <?=json_encode($pretest)?>,
             backgroundColor: [
-                '#B4A851'
+                '#5ba8a0'
             ],
             borderColor: [
-                '#B4A851'
+                '#5ba8a0'
             ],
             borderWidth: 1
         }]
@@ -210,10 +202,10 @@ var myChart = new Chart(ctx, {
             label: 'ผลคะแนนทดสอบก่อนเรียน',
             data: <?=json_encode($pretesta)?>,
             backgroundColor: [
-                '#B4A851'
+                '#5ba8a0'
             ],
             borderColor: [
-                '#B4A851'
+                '#5ba8a0'
             ],
             borderWidth: 1
         },
@@ -221,10 +213,10 @@ var myChart = new Chart(ctx, {
             label: 'ผลคะแนนทดสอบหลังเรียน',
             data: <?=json_encode($posttesta)?>,
             backgroundColor: [
-                '#CDB9D6'
+                '#5d6e1e'
             ],
             borderColor: [
-                '#CDB9D6'
+                '#5d6e1e'
             ],
             borderWidth: 1
         }
@@ -253,38 +245,14 @@ var myChart = new Chart(ctx, {
 </script>
 
 <style>
-body {
-  background-image: url('../images/wall.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
-.navbar{
-  background-color: #660223;
-  overflow: hidden;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  
-}
-.nav-link {
-  color: white;
-}
-.navbar-toggler{
-  border-color: rgb(255,102,203);
-}
-.navbar-toggler-icon{
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,102,203, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-}
 .main {
-  margin-top: 56px;
+  padding: 16px 0 0;
+  letter-spacing: 2px;
+  font-size: 40px;
   text-align: center;
-  background-image: url('../images/wallpa.jpg');
-  color: white;
-  height: 80px;
-  padding: 21px; 
+  color: #551524;
 }
-.pic{
+.pic {
   background-color: #AE0F0F;
   height: 180px;
   color: white;
@@ -314,7 +282,14 @@ body {
 .time{
   text-align: right;
 }
-.zx{
+.zx {
   font-size: 27px;
+}
+.backLink {
+  margin: 20px 0;
+  text-align: center;
+}
+.text-reset {
+  font-size: 18px;
 }
 </style>
