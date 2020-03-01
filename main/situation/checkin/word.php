@@ -14,7 +14,7 @@ $_SESSION["ChecInWord_Tin"] = $ChecInWord_Tin;
 <!doctype html>
 <html lang="en">
   <head>
-    <title>การเช็คอิน</title>
+    <title>คำศัพท์: การเช็คอิน</title>
     <?php include("../headU.php"); ?>
    <!-- start -->
    <div class="text"><p>คำศัพท์: การเช็คอิน</p></div>

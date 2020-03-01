@@ -6,268 +6,176 @@ if(isset($_COOKIE["user"])){
 <html lang="en">
   <head>
     <title>การสะกดเสียงภาษาจีน (พินอิน)</title>
-    <!-- Required meta tags -->
+     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
     <link rel="stylesheet" href="../../../style.css">
-    <link rel="icon" href="../../../images/icon_9.png" >
-  </head>
-  <body>
-  <nav class="navbar navbar-expand-lg">
-    <a class="navbar-brand" href="../../../home/index.php">
-   <img src="../../../images/icon_9.png" width="40" height="30" class="d-inline-block align-top" alt="">
-</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
+    <link rel="icon" href="../../../images/logoPJ.png" >
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="../../../home/index.php">CHINY</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <li class="nav-item active">
-            <a class="nav-link" href="../../situation.php">สถานการณ์ <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item active">
-        <a class="nav-link" href="../../gramma.php">ไวยากรณ์</a>
-        </li>
-        <li class="nav-item active">
-        <a class="nav-link" href="../../result.php">ผลสรุป</a>
-        </li>
-       
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-        <a  class="nav-link" href="../../../logout.php">ออกจากระบบ </a>
-        </form>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+          <a class="nav-link" href="../../../main/situation.php">สถานการณ์ <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="../../../main/gramma.php">ไวยากรณ์</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="../../../main/conclude.php">ผลสรุป</a>
+      </li>
+      </ul>
+      <a class="nav-link" href="../../../logout.php">ออกจากระบบ</a>
     </div>
-    </nav>
-        <style>
-     body {
-        background-image: url('../../../images/wall.png');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-       
-        }
-    .navbar{
-        background-color: #660223;
-        /* overflow: hidden;
-        position: fixed;
-        top: 0;
-        width: 100%; */
-    }
-   
-  .nav-link {
-        color: white;
-    }
-    .navbar-toggler{
-        border-color: rgb(255,102,203);
-    }
-    .navbar-toggler-icon{
-        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,102,203, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-    }
-   
-   .text{
-    text-align: center;
-    background-image: url('../../../images/wallpa.jpg');
-    color: white;
-    height: 80px;
-    padding: 21px; 
-   }
-  .head{
-    font-weight: bold;
-    color: #660223;
-  }
-  .colo{
-    background-color: #FFFDFD;
-  }
-  .bb{
-    text-align: left; 
-    width: 13%;
-    color: #0A3073;
-    font-size: 18px;
-  }
-  .cc{
-    text-align: center;
-  }
-  /* .btn-secondary{
-      color: black;
-  } */
-  .btn-primary{
-    background-color: #FEF9D3;
-    color: #FEF9D3;
-  }
-    </style>
-   
+  </nav>
    <!-- start -->
    
-   <div class="text"><h3>การสะกดเสียงภาษาจีน (พินอิน)</h3></div><br>
+   <div class="text"><p>การสะกดเสียงภาษาจีน (พินอิน)</p></div>
 
    <div class="container">
    <div class="link">
-   <h6><a href="../../../home/index.php" class="text-reset">หน้าหลัก</a> > <a href="../../gramma.php" class="text-reset">ไวยากรณ์</a> > <a href="pinyin.php" class="text-reset">การสะกดเสียงภาษาจีน (พินอิน)</a></h6>
+   <h5><a href="../../../home/index.php" class="text-reset">หน้าหลัก</a> > <a href="../../gramma.php" class="text-reset">ไวยากรณ์</a> > <a href="pinyin.php" class="text-reset">การสะกดเสียงภาษาจีน (พินอิน)</a></h5>
    </div>
    </div>
     <br>
-    <script>
-        function playSound(pp){
-    var audios = document.getElementsByTagName('audio');
-    console.log(pp);
-    for(var i = 0, len = audios.length; i < len;i++){
-        if(audios[i].id == "sound" + pp){
-           // console.log(audios[i]);
-            audios[i].play();
-            if (audios[i].paused) {
-           audios[i].play();
-           }else{
-               audios[i].currentTime = 0
-           }
-          
-        }
-    }
-}
-
-document.addEventListener('play', function(e){
-    var audios = document.getElementsByTagName('audio');
-    for(var i = 0, len = audios.length; i < len;i++){
-        if(audios[i] != e.target){
-            audios[i].pause();
-            audios[i].currentTime = 0;
-        }
-    }
-}, true);
-        
-    
-    </script>
 <div class="container">
 <div class="head">
 <h5>1. พยัญชนะ 声母 Shēngmǔ</h5>
 </div><br>
 <div class="table-responsive">
-<div class="colo">
-<table class="table">
-    <tr>
-      <th class="bb" >ริมฝีปาก</th>
-      <td class="cc">
-      <audio id="sound1" src="../../../sound/consonant/b.mp3"></audio>
-        <button onclick="playSound(1)" style="background-color: #FEF9D3; color:black;" type="button" class="btn btn-secondary k"> 
-            b (โปะ) 
-        </button>
-      </td>
-      <td class="cc" >
-       <audio id="sound2" src="../../../sound/consonant/p.mp3"></audio>
-       <button onclick="playSound(2)" type="button" class="btn btn-light ">p (โพะ)</button></td>
-      <td class="cc" >
-       <audio id="sound3" src="../../../sound/consonant/m.mp3"></audio>
-       <button onclick="playSound(3)" type="button" class="btn btn-light ">m (โมะ)</button></td>
-      <td class="cc" >
-       <audio id="sound4" src="../../../sound/consonant/f.mp3"></audio>
-       <button onclick="playSound(4)" type="button" class="btn btn-light ">f (โฟะ)</button></td>
-    </tr>
-    <tr>
-      <th class="bb" >ปุ่มเหงือกบน</th>
-      <td class="cc">
-      <audio id="sound5" src="../../../sound/consonant/d.mp3"></audio>
-        <button onclick="playSound(5)" style="background-color: #FEF9D3; color:black;" type="button" class="btn btn-secondary ">
-            d (เตอะ)
-        </button>
-      </td>
-      <td class="cc" >
-       <audio id="sound6" src="../../../sound/consonant/t.mp3"></audio>
-       <button onclick="playSound(6)" type="button" class="btn btn-light ">t (เทอะ)</button></td>
-      <td class="cc" >
-       <audio id="sound7" src="../../../sound/consonant/n.mp3"></audio>
-       <button onclick="playSound(7)" type="button" class="btn btn-light ">n (เนอะ)</button></td>
-      <td class="cc" >
-       <audio id="sound8" src="../../../sound/consonant/l.mp3"></audio>
-       <button onclick="playSound(8)" type="button" class="btn btn-light ">l (เลอะ)</button></td>
-    </tr>
-    <tr>
-      <th class="bb" >เพดานอ่อน</th>
-      <td class="cc">
-       <audio id="sound9" src="../../../sound/consonant/g.mp3"></audio>
-       <button onclick="playSound(9)" type="button" class="btn btn-light ">g (เกอะ)</button></td>
-      <td class="cc" >
-       <audio id="sound10" src="../../../sound/consonant/k.mp3"></audio>
-       <button onclick="playSound(10)" type="button" class="btn btn-light ">k (เคอะ)</button></td>
-      <td class="cc" >
-       <audio id="sound11" src="../../../sound/consonant/h.mp3"></audio>
-       <button onclick="playSound(11)" type="button" class="btn btn-light ">h (เฮอะ)</button></td>
-      <td class="cc" >-</td>
-    </tr>
-    <tr>
-      <th class="bb" >เพดานแข็ง</th>
-      <td class="cc">
-       <audio id="sound12" src="../../../sound/consonant/j.mp3"></audio>
-        <button onclick="playSound(12)" style="background-color: #D9F1F1; color:black;" type="button" class="btn btn-secondary ">
-            j (จิ)
-        </button>
-      </td>
-      <td class="cc">
-       <audio id="sound13" src="../../../sound/consonant/q.mp3"></audio>
-        <button onclick="playSound(13)" style="background-color: #FEF9D3; color:black;" type="button" class="btn btn-secondary ">
-            q (ชิ)
-        </button>
-      </td>
-      <td class="cc">
-       <audio id="sound14" src="../../../sound/consonant/x.mp3"></audio>
-        <button onclick="playSound(14)" style="background-color: #FEF9D3; color:black;" type="button" class="btn btn-secondary ">
-            x (สิ)
-        </button>
-      </td>
-      <td class="cc" >-</td>
-    </tr>
-    <tr>
-      <th class="bb" >ปุ่มเหงือกบน</th>
-      <td class="cc">
-       <audio id="sound15" src="../../../sound/consonant/z.mp3"></audio>
-        <button onclick="playSound(15)" style="background-color: #FEF9D3; color:black;" type="button" class="btn btn-secondary ">
-        z (จึ)
-        </button>
-      </td>
-      <td class="cc">
-       <audio id="sound16" src="../../../sound/consonant/c.mp3"></audio>
-        <button onclick="playSound(16)" style="background-color: #FEF9D3; color:black;" type="button" class="btn btn-secondary ">
-        c (ชึ)
-        </button>
-      </td>
-      <td class="cc">
-       <audio id="sound17" src="../../../sound/consonant/s.mp3"></audio>
-        <button onclick="playSound(17)" style="background-color: #D9F1F1; color:black;" type="button" class="btn btn-secondary ">
-        s (สึ)
-        </button>
-      </td>
-      <td class="cc" >-</td>
-    </tr>
-    <tr>
-      <th class="bb" >ม้วนปลายลิ้น</th>
-      <td class="cc">
-       <audio id="sound18" src="../../../sound/consonant/zh.mp3"></audio>
-        <button onclick="playSound(18)" style="background-color: #FEF9D3; color:black;" type="button" class="btn btn-secondary ">
-        zh (จึ)
-        </button>
-      </td>
-      <td class="cc">
-       <audio id="sound19" src="../../../sound/consonant/ch.mp3"></audio>
-        <button onclick="playSound(19)" style="background-color: #FEF9D3; color:black;" type="button" class="btn btn-secondary ">
-        ch (ชึ)
-        </button>
-      </td>
-      <td class="cc">
-       <audio id="sound20" src="../../../sound/consonant/sh.mp3"></audio>
-        <button onclick="playSound(20)" style="background-color: #FEF9D3; color:black;" type="button" class="btn btn-secondary ">
-        sh (สึ)
-        </button>
-      </td>
-      <td class="cc">
-       <audio id="sound21" src="../../../sound/consonant/r.mp3"></audio>
-        <button onclick="playSound(21)" style="background-color: #FEF9D3; color:black;" type="button" class="btn btn-secondary ">
-        r (รึ)
-        </button>
-      </td>
-    </tr>
-</table>
+  <div class="colo">
+    <table class="table">
+        <tr>
+          <th class="bb" >ริมฝีปาก</th>
+          <td class="cc">
+          <audio id="sound1" src="../../../sound/consonant/b.mp3"></audio>
+            <button onclick="playSound(1)" style="background-color: #FEF9D3; color:black;" type="button" class="btn btn-secondary k"> 
+                b (โปะ) 
+            </button>
+          </td>
+          <td class="cc" >
+          <audio id="sound2" src="../../../sound/consonant/p.mp3"></audio>
+          <button onclick="playSound(2)" type="button" class="btn btn-light ">p (โพะ)</button></td>
+          <td class="cc" >
+          <audio id="sound3" src="../../../sound/consonant/m.mp3"></audio>
+          <button onclick="playSound(3)" type="button" class="btn btn-light ">m (โมะ)</button></td>
+          <td class="cc" >
+          <audio id="sound4" src="../../../sound/consonant/f.mp3"></audio>
+          <button onclick="playSound(4)" type="button" class="btn btn-light ">f (โฟะ)</button></td>
+        </tr>
+        <tr>
+          <th class="bb" >ปุ่มเหงือกบน</th>
+          <td class="cc">
+          <audio id="sound5" src="../../../sound/consonant/d.mp3"></audio>
+            <button onclick="playSound(5)" style="background-color: #FEF9D3; color:black;" type="button" class="btn btn-secondary ">
+                d (เตอะ)
+            </button>
+          </td>
+          <td class="cc" >
+          <audio id="sound6" src="../../../sound/consonant/t.mp3"></audio>
+          <button onclick="playSound(6)" type="button" class="btn btn-light ">t (เทอะ)</button></td>
+          <td class="cc" >
+          <audio id="sound7" src="../../../sound/consonant/n.mp3"></audio>
+          <button onclick="playSound(7)" type="button" class="btn btn-light ">n (เนอะ)</button></td>
+          <td class="cc" >
+          <audio id="sound8" src="../../../sound/consonant/l.mp3"></audio>
+          <button onclick="playSound(8)" type="button" class="btn btn-light ">l (เลอะ)</button></td>
+        </tr>
+        <tr>
+          <th class="bb" >เพดานอ่อน</th>
+          <td class="cc">
+          <audio id="sound9" src="../../../sound/consonant/g.mp3"></audio>
+          <button onclick="playSound(9)" type="button" class="btn btn-light ">g (เกอะ)</button></td>
+          <td class="cc" >
+          <audio id="sound10" src="../../../sound/consonant/k.mp3"></audio>
+          <button onclick="playSound(10)" type="button" class="btn btn-light ">k (เคอะ)</button></td>
+          <td class="cc" >
+          <audio id="sound11" src="../../../sound/consonant/h.mp3"></audio>
+          <button onclick="playSound(11)" type="button" class="btn btn-light ">h (เฮอะ)</button></td>
+          <td class="cc" >-</td>
+        </tr>
+        <tr>
+          <th class="bb" >เพดานแข็ง</th>
+          <td class="cc">
+          <audio id="sound12" src="../../../sound/consonant/j.mp3"></audio>
+            <button onclick="playSound(12)" style="background-color: #D9F1F1; color:black;" type="button" class="btn btn-secondary ">
+                j (จิ)
+            </button>
+          </td>
+          <td class="cc">
+          <audio id="sound13" src="../../../sound/consonant/q.mp3"></audio>
+            <button onclick="playSound(13)" style="background-color: #FEF9D3; color:black;" type="button" class="btn btn-secondary ">
+                q (ชิ)
+            </button>
+          </td>
+          <td class="cc">
+          <audio id="sound14" src="../../../sound/consonant/x.mp3"></audio>
+            <button onclick="playSound(14)" style="background-color: #FEF9D3; color:black;" type="button" class="btn btn-secondary ">
+                x (สิ)
+            </button>
+          </td>
+          <td class="cc" >-</td>
+        </tr>
+        <tr>
+          <th class="bb" >ปุ่มเหงือกบน</th>
+          <td class="cc">
+          <audio id="sound15" src="../../../sound/consonant/z.mp3"></audio>
+            <button onclick="playSound(15)" style="background-color: #FEF9D3; color:black;" type="button" class="btn btn-secondary ">
+            z (จึ)
+            </button>
+          </td>
+          <td class="cc">
+          <audio id="sound16" src="../../../sound/consonant/c.mp3"></audio>
+            <button onclick="playSound(16)" style="background-color: #FEF9D3; color:black;" type="button" class="btn btn-secondary ">
+            c (ชึ)
+            </button>
+          </td>
+          <td class="cc">
+          <audio id="sound17" src="../../../sound/consonant/s.mp3"></audio>
+            <button onclick="playSound(17)" style="background-color: #D9F1F1; color:black;" type="button" class="btn btn-secondary ">
+            s (สึ)
+            </button>
+          </td>
+          <td class="cc" >-</td>
+        </tr>
+        <tr>
+          <th class="bb" >ม้วนปลายลิ้น</th>
+          <td class="cc">
+          <audio id="sound18" src="../../../sound/consonant/zh.mp3"></audio>
+            <button onclick="playSound(18)" style="background-color: #FEF9D3; color:black;" type="button" class="btn btn-secondary ">
+            zh (จึ)
+            </button>
+          </td>
+          <td class="cc">
+          <audio id="sound19" src="../../../sound/consonant/ch.mp3"></audio>
+            <button onclick="playSound(19)" style="background-color: #FEF9D3; color:black;" type="button" class="btn btn-secondary ">
+            ch (ชึ)
+            </button>
+          </td>
+          <td class="cc">
+          <audio id="sound20" src="../../../sound/consonant/sh.mp3"></audio>
+            <button onclick="playSound(20)" style="background-color: #FEF9D3; color:black;" type="button" class="btn btn-secondary ">
+            sh (สึ)
+            </button>
+          </td>
+          <td class="cc">
+          <audio id="sound21" src="../../../sound/consonant/r.mp3"></audio>
+            <button onclick="playSound(21)" style="background-color: #FEF9D3; color:black;" type="button" class="btn btn-secondary ">
+            r (รึ)
+            </button>
+          </td>
+        </tr>
+    </table>
 </div>
 
 
@@ -484,15 +392,8 @@ document.addEventListener('play', function(e){
     </td>
   </tr>
 </table>
-
-
-
-
 </div>
 </div>
-
-
-
 <div class="head">
 <h5>3. วรรณยุกต์ 声调 Shēngdiào</h5>
 </div><br>
@@ -556,14 +457,12 @@ document.addEventListener('play', function(e){
 </table>
 </div>
 </div>
-
 <div class="alert alert-danger alert-dismissible fade show" role="alert">
   <strong>หมายเหตุ </strong> เสียงวรรณยุกต์ภาษาจีนจะสูงกว่าภาษาไทยเล็กน้อย
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
-
 <br>
 <div class="head">
 <h5>4. การสะกด 拼音 Pīnyīn</h5>
@@ -593,7 +492,83 @@ document.addEventListener('play', function(e){
 
 </div><br>
 </div>
+  <div class="backLink"><h6><a href="../../../home/index.php" class="text-reset"> << กลับไปหน้าหลัก </a> </h6>
+
+
+ <!-- ปิด cookie -->
+
+ <?php
+
+}else{
+   header("location:../../../logout.php");
+}
+ob_end_flush();
+?>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
+<script>
+        function playSound(pp){
+    var audios = document.getElementsByTagName('audio');
+    console.log(pp);
+    for(var i = 0, len = audios.length; i < len;i++){
+        if(audios[i].id == "sound" + pp){
+           // console.log(audios[i]);
+            audios[i].play();
+            if (audios[i].paused) {
+           audios[i].play();
+           }else{
+               audios[i].currentTime = 0
+           }
+          
+        }
+    }
+}
+document.addEventListener('play', function(e){
+    var audios = document.getElementsByTagName('audio');
+    for(var i = 0, len = audios.length; i < len;i++){
+        if(audios[i] != e.target){
+            audios[i].pause();
+            audios[i].currentTime = 0;
+        }
+    }
+}, true);
+</script>
 <style>
+body {
+  background: #FFEEEB;
+}
+.nav-link {
+  color: black;
+}
+.navbar{
+  background-color: #e4cbd3 !important;
+  font-size: 18px;
+}
+.active {
+  transition: opacity 0.2s;
+}
+.navbar-collapse:hover .active:not(:hover) {
+  opacity: 0.5;
+}
+.text{
+  padding: 16px 0 0;
+  letter-spacing: 2px;
+  font-size: 40px;
+  text-align: center;
+  color: #551524;
+}
+.head{
+  font-weight: bold;
+  color: #660223;
+}
+.colo{
+background-color: #FFFDFD;
+}
 .xx{
     text-align: center;
 }
@@ -610,27 +585,24 @@ document.addEventListener('play', function(e){
   text-align: center;
   width: 20%;
 }
-</style>
-    <div class="container">
-    </div><br>
-    <div class="text-center" style="color: red;"><h6><a href="../../../home/index.php" class="text-reset"> << กลับไปหน้าหลัก </a> </h6></div>
-    
-
-
- <!-- ปิด cookie -->
-
- <?php
-
-}else{
-   header("location:../../../logout.php");
+.bb{
+text-align: left; 
+width: 13%;
+color: #0A3073;
+font-size: 18px;
 }
-ob_end_flush();
-?>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
-</html>
+.cc{
+text-align: center;
+}
+.btn-primary{
+background-color: #FEF9D3;
+color: #FEF9D3;
+}
+.backLink {
+  margin: 20px 0;
+  text-align: center;
+}
+.text-reset {
+  font-size: 18px;
+}
+</style>

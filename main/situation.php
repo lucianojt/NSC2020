@@ -847,7 +847,7 @@ $use =  $_SESSION["username_user"];
     </a>
     
     <?php 
-    $sql2 = "SELECT * FROM scoreCheckin WHERE user_usr = '$use' AND code = '$code' AND score_checkin >= 6";
+    $sql2 = "SELECT * FROM scoreCheckin WHERE user_usr = '$use' AND code = '$code' AND score_checkin >= 8 ";
     $result2 = mysqli_query($connection,$sql2);
     $row2 = mysqli_fetch_assoc($result2);
     if(!$row2){

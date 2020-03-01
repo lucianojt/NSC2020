@@ -813,12 +813,6 @@ if(isset($_SESSION["OutCon_Tin"])){
   
    //var_dump($_SESSION);
 }
-
-
-
-
-
-
 unset($_SESSION["Gramma_Dout"]);
 unset($_SESSION["Gramma_Tout"]);
 
@@ -827,123 +821,13 @@ unset($_SESSION["Gramma_Tout"]);
 <html lang="en">
   <head>
     <title>ไวยากรณ์</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
-    <link rel="stylesheet" href="../style.css">
-    <script type="text/javascript" src="../jquery-3.4.1.min.js"></script>
-    <link rel="icon" href="../images/icon_9.png" >  
-  </head>
-  <body>
- 
-
-        <nav class="navbar navbar-expand-lg">
-        <a class="navbar-brand" href="../home/index.php">
-       <img src="../images/icon_9.png" width="40" height="30" class="d-inline-block align-top" alt="">
-  </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
-                <a class="nav-link" href="situation.php">สถานการณ์ <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item active">
-            <a class="nav-link" href="gramma.php">ไวยากรณ์</a>
-            </li>
-            <li class="nav-item active">
-            <a class="nav-link" href="conclude.php">ผลสรุป</a>
-            </li>
-           
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-            <a  class="nav-link" href="../logout.php">ออกจากระบบ </a>
-            </form>
-        </div>
-        </nav>
-
-        <style>
-    body {
-        background-image: url('../images/wall.png');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-       
-        }
- .navbar {
-  /* overflow: hidden;
-  position: fixed;
-  top: 0;
-  width: 100%; */
-  background-color: #660223;
- 
-}
-.nav-link{
-     color: white;
-}
-.navbar-toggler{
-        border-color: rgb(255,102,203);
-    }
-    .navbar-toggler-icon{
-        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,102,203, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-    }
-  
-   .text{
-    /* text-align: center;
-    background-image: url('../images/wallpa.jpg');
-    color: white;
-    height: 80px;
-    padding: 50px; 
-  margin-top: 30px; */
-  text-align: center;
-    background-image: url('../images/wallpa.jpg');
-    color: white;
-    height: 80px;
-    padding: 21px; 
-   }
-   .aa {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-          grid-row-gap: 2rem;
-          grid-column-gap: 2rem;
-        
-        }
-    
-        .card {
-        padding: 2rem;
-        border: 1px solid rgb(210, 210, 210);
-        background-color: #AE0F0F;
-        text-align: center;
-        color: white;
-        border-radius: 20px;
-        }
-        .card:hover {
-  background-color: #941414;
-   }
-        .cardF{
-            padding: 2rem;
-        border: 1px solid rgb(210, 210, 210);
-        background-color: #669900;
-        text-align: center;
-        color: white;
-        border-radius: 20px;
-        }
-        a:hover {
-          color: black;
-        }
-    </style>
-   
+    <?php include("headU.php"); ?>
    <!-- start -->
    
-   <div class="text"><h3>ไวยากรณ์</h3></div><br>
+   <div class="text"><p>ไวยากรณ์</p></div>
    <div class="container">
    <div class="link">
-   <h6><a href="../home/index.php" class="text-reset">หน้าหลัก</a> > ไวยากรณ์</a></h6>
+   <h5><a href="../home/index.php" class="text-reset">หน้าหลัก</a> > ไวยากรณ์</a></h5>
    </div>
    <br>
   <div class="aa">
@@ -954,8 +838,6 @@ unset($_SESSION["Gramma_Tout"]);
     </div><br>
     การสะกดเสียงภาษาจีน
     </a>
-
-
           <?php 
            $sql = 'select * from main';
            $result = mysqli_query($connection,$sql);
@@ -987,14 +869,8 @@ unset($_SESSION["Gramma_Tout"]);
    
              
 </div>
-
-
-
    </div>
-    <div class="container">
-    </div><br>
-    <div class="text-center" style="color: red;"><h6><a href="../home/index.php" class="text-reset"> << กลับไปหน้าหลัก </a> </h6></div>
-      
+  <div class="backLink"><h6><a href="../home/index.php" class="text-reset"> << กลับไปหน้าหลัก </a> </h6>
     <?php
 
 }else{
@@ -1011,3 +887,52 @@ ob_end_flush();
   
   </body>
 </html>
+<style>
+.text {
+  padding: 16px 0 0;
+  letter-spacing: 2px;
+  font-size: 40px;
+  text-align: center;
+  color: #551524;
+}
+.aa {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-row-gap: 2rem;
+  grid-column-gap: 2rem;
+}
+.cardF {
+  position: static;
+  padding: 20px;
+  background: #7e1f35;
+  text-align: center;
+  color: white;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.cardF:hover {
+  background-color: #551524;
+}
+a:hover {
+  color: white;
+}
+.card {
+  position: static;
+  padding: 20px;
+  background: #7e1f35;
+  text-align: center;
+  color: white;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.card:hover {
+  background-color: #551524;
+}
+.backLink {
+  margin: 20px 0;
+  text-align: center;
+}
+.text-reset {
+  font-size: 18px;
+}
+</style>

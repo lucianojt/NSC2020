@@ -92,7 +92,7 @@ if(isset($_POST["answer"])) {
     ?>
       <div class="score">
         <div class="center"><?php echo $score;?> คะแนน</div>
-        <a href="checkin.php" class="btn btn-outline-dark">ตกลง</a>
+        <a href="checkin.php" class="btn btn-outline-light">ตกลง</a>
       </div>
     <?php
   } else {
@@ -100,7 +100,7 @@ if(isset($_POST["answer"])) {
       <div class="nochoise">
         <p>เกิดบางอย่างผิดพลาด</p>
         <div class="link">
-          <a href="checkin.php" class="btn btn-outline-dark">ตกลง</a>
+          <a href="checkin.php" class="btn btn-outline-light">ตกลง</a>
         </div>
       </div>
     <?php
@@ -118,7 +118,7 @@ ob_end_flush();
 
 <style>
 body {
-  background: #e4cbd3;
+  background: #FFEEEB;
 }
 .nav-link {
   color: black;
@@ -143,7 +143,7 @@ body {
 }
 .score {
   text-align: center;
-  background-color: #FECCCC;
+  background-color: #551524;
   width: 30%;
   border: none;
   height: auto;
@@ -177,12 +177,13 @@ body {
 }
 @media (max-width: 575.98px) {
   .score {
-    width: 60%;
+    width: 80%;
     position: absolute;
   }
 }
 .center {
-  color: #3E3E3E;
+  margin: 0 0 10px;
+  color: white;
 }
 .cent {
   font-size: 24px;
