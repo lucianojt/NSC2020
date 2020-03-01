@@ -11,59 +11,12 @@ mysqli_set_charset($connection,'utf8');
   <head>
     <title>ระดับสถานการณ์</title>
     <?php include("headU.php"); ?>
-
-        <style>
-    body {
-        background-image: url('../images/wall.png');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-       
-        }
-    .navbar{
-        background-color: #660223;
-        /* overflow: hidden;
-        position: fixed;
-        top: 0;
-        width: 100%; */
-    }
-    .cent{
-    text-align: center;
-   }
-   
-  .nav-link {
-        color: white;
-    }
-    .navbar-toggler{
-        border-color: rgb(255,102,203);
-    }
-    .navbar-toggler-icon{
-        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,102,203, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-    }
-    .main {
-        text-align: center;
-    background-image: url('../images/wallpa.jpg');
-    color: white;
-    height: 80px;
-    padding: 21px; 
-    }
-
-    .table{
-        background-color: #DEDADB;
-    }
-
-   
-    </style>
-   
-
-   <div class="main">
-    <h3>ระดับสถานการณ์</h3>
-    </div><br>
-  
-  
+  <div class="main">
+    <p>ระดับสถานการณ์</p>
+  </div>
     <div class="container">
     <div class="link">
-        <h6><a href="../home/index.php" class="text-reset">หน้าหลัก</a> > <a href="conclude.php" class="text-reset">ผลสรุป</a> > ระดับสถานการณ์</h6>
+        <h5><a href="../home/index.php" class="text-reset">หน้าหลัก</a> > <a href="conclude.php" class="text-reset">ผลสรุป</a> > ระดับสถานการณ์</h5>
    </div><br>
 <!-- close container -->
    </div>
@@ -92,37 +45,30 @@ if(!$row){
     <table class="table">
     <thead class="thead" style="color: #660223;">
         <tr>
-        <th scope="col">สถานการณ์</th>
-        <th scope="col">เกณฑ์</th>
-        <th scope="col">คะแนนที่ได้(มากที่สุด)</th>
-        <th scope="col">จำนวนครั้งที่ทำแบบทดสอบ</th>
+          <th scope="col">สถานการณ์</th>
+          <th scope="col">เกณฑ์</th>
+          <th scope="col">คะแนนที่ได้(มากที่สุด)</th>
+          <th scope="col">จำนวนครั้งที่ทำแบบทดสอบ</th>
         </tr>
     </thead>
     <tbody>
-
-       
-
         <tr>
-        <th scope="row" style="color: #660223;">เช็คอิน</th>
-        <td class="cent">-</td>
-        <td class="cent">-</td>
-        <td class="cent">-</td>
+          <th scope="row" style="color: #660223;">เช็คอิน</th>
+          <td class="cent">-</td>
+          <td class="cent">-</td>
+          <td class="cent">-</td>
         </tr>
-
-      
-
         <tr>
-        <th scope="row" style="color: #660223;">การแจ้งออกจากโรงแรม (เช็คเอาท์)</th>
-        <td class="cent">-</td>
-        <td class="cent">-</td>
-        <td class="cent">-</td>
+          <th scope="row" style="color: #660223;">การแจ้งออกจากโรงแรม (เช็คเอาท์)</th>
+          <td class="cent">-</td>
+          <td class="cent">-</td>
+          <td class="cent">-</td>
         </tr>
     </tbody>
     </table>
     <?php
     }else{
         // echo $userr.$room;
-
          //เก็บคะแนนของประโยคที่ใช้ในชีวิตประจำวัน
          $sql31 = "SELECT score_sim FROM scoreSim WHERE user_usr = '$userr' AND code = '$room' ";
          $result31 = mysqli_query($connection,$sql31);
@@ -319,9 +265,6 @@ if(!$row){
           }
           }
           //สิ้นสุดการเก็บคะแนนของการแจ้งออกจากโรงแรม (เช็คเอาท์)
-
-
-
         ?>
          <p style="color: red; font-weight:bold;">เกณฑ์การวัดระดับ</p>
     <table class="table">
@@ -331,11 +274,10 @@ if(!$row){
         <th class="cent" scope="col">เกณฑ์</th>
         <th class="cent" scope="col">คะแนนที่ได้(มากที่สุด)</th>
         <th class="cent" scope="col">จำนวนครั้งที่ทำแบบทดสอบ</th>
+        <th class="cent" scope="col">กราฟ</th>
         </tr>
     </thead>
     <tbody>
-        
-
         <tr>
         <th scope="row" style="color: #660223;">เช็คอิน</th>
         <?php if(!$row61){
@@ -343,31 +285,38 @@ if(!$row){
           <td class="cent">-</td>
       <td class="cent">-</td>
       <td class="cent">-</td>
-          <?php
-      }else{
+      <td class="cent">-</td>
+      <?php
+      } else {
         if( $sc >=0 AND $sc <= 9 ){
-            ?>
-       <td class="cent">พอใช้</td>
-   <td class="cent"><?php echo $sc."/12";?></td>
-   <td class="cent"><?php echo $row611." ครั้ง";?></td>
-     <?php
-       }elseif($sc >9 AND $sc < 12){
+        ?>
+          <td class="cent">พอใช้</td>
+          <td class="cent"><?php echo $sc."/12";?></td>
+          <td class="cent"><?php echo $row611." ครั้ง";?></td>
+          <?php
+        }elseif($sc >9 AND $sc < 12){
          ?>
-         <td class="cent">ดี</td>
-     <td class="cent"><?php echo $sc."/12";?></td>
-     <td class="cent"><?php echo $row611." ครั้ง";?></td>
-       <?php
-       }elseif($sc >=12){
-         ?>
-         <td class="cent">ดีมาก</td>
-     <td class="cent"><?php echo $sc."/12";?></td>
-     <td class="cent"><?php echo $row611." ครั้ง";?></td>
-       <?php
+          <td class="cent">ดี</td>
+          <td class="cent"><?php echo $sc."/12";?></td>
+          <td class="cent"><?php echo $row611." ครั้ง";?></td>
+      <?php
+        }elseif($sc >=12){
+        ?>
+        <td class="cent">ดีมาก</td>
+        <td class="cent"><?php echo $sc."/12";?></td>
+        <td class="cent"><?php echo $row611." ครั้ง";?></td>
+      <?php
        }
+       ?>
+        <td class="cent">
+          <button type="button" class="btn btn-info" data-toggle="modal" data-target="#checkin">
+          ดูกราฟ
+         </button>
+        </td>
+       <?php
       }
       ?>  
     </tr>
-
     <tr>
         <th scope="row" style="color: #660223;">การแจ้งออกจากโรงแรม (เช็คเอาท์)</th>
         <?php if(!$row101){
@@ -375,61 +324,120 @@ if(!$row){
           <td class="cent">-</td>
       <td class="cent">-</td>
       <td class="cent">-</td>
+      <td class="cent">-</td>
           <?php
       }else{
         if( $ssss >=0 AND $ssss <= 6 ){
             ?>
-       <td class="cent">พอใช้</td>
-   <td class="cent"><?php echo $ssss."/10";?></td>
-   <td class="cent"><?php echo $row1011." ครั้ง";?></td>
-     <?php
+      <td class="cent">พอใช้</td>
+      <td class="cent"><?php echo $ssss."/10";?></td>
+      <td class="cent"><?php echo $row1011." ครั้ง";?></td>
+      <?php
        }elseif($ssss >6 AND $ssss < 8){
          ?>
-         <td class="cent">ดี</td>
-     <td class="cent"><?php echo $ssss."/10";?></td>
-     <td class="cent"><?php echo $row1011." ครั้ง";?></td>
-       <?php
+        <td class="cent">ดี</td>
+        <td class="cent"><?php echo $ssss."/10";?></td>
+        <td class="cent"><?php echo $row1011." ครั้ง";?></td>
+      <?php
        }elseif($ssss >=8  ){
          ?>
-         <td class="cent">ดีมาก</td>
-     <td class="cent"><?php echo $ssss."/10";?></td>
-     <td class="cent"><?php echo $row1011." ครั้ง";?></td>
-       <?php
+        <td class="cent">ดีมาก</td>
+        <td class="cent"><?php echo $ssss."/10";?></td>
+        <td class="cent"><?php echo $row1011." ครั้ง";?></td>
+      <?php
        }
+       ?>
+        <td class="cent">
+          <button type="button" class="btn btn-info" data-toggle="modal" data-target="#checkout">
+            ดูกราฟ
+          </button>
+        </td>
+       <?php
       }
       ?>  
     </tr>
-
-
-
-
     </tbody>
     </table>
         <?php
     }
 }
-
 ?>
-
-
+<!-- graph checkin -->
+<div class="modal fade" id="checkin" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">เช็คอิน</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <?php
+      $sqlCheckin = "SELECT * FROM scoreCheckin WHERE user_usr = '$userr' AND code = '$room' ORDER BY `id` ASC ";
+      $resultCheckin = mysqli_query($connection,$sqlCheckin);
+      while($rowCheckin = mysqli_fetch_assoc($resultCheckin)){
+        $g_scoreCheckin[] = $rowCheckin['score_checkin'];
+      }
+      $countTest = count($g_scoreCheckin);
+      $x = 1;
+      $countTestCheckin = [];
+      while($x <= $countTest) {
+        array_push($countTestCheckin, $x);
+        $x++;
+      }
+      ?>
+        <canvas id="chart-checkin"></canvas>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" data-dismiss="modal">ตกลง</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- graph checkout -->
+<div class="modal fade" id="checkout" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">การแจ้งออกจากโรงแรม (เช็คเอาท์)</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <?php
+      $sqlCheckout = "SELECT * FROM scoreOut WHERE user_usr = '$userr' AND code = '$room' ORDER BY `id` ASC ";
+      $resultCheckout = mysqli_query($connection,$sqlCheckout);
+      while($rowCheckout = mysqli_fetch_assoc($resultCheckout)){
+        $g_scoreCheckout[] = $rowCheckout['score_out'];
+      }
+      $countTestOut = count($g_scoreCheckout);
+      $x = 1;
+      $countTestCheckout = [];
+      while($x <= $countTestOut) {
+        array_push($countTestCheckout, $x);
+        $x++;
+      }
+      ?>
+        <canvas id="chart-checkout"></canvas>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" data-dismiss="modal">ตกลง</button>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- close container -->
 </div>
-    <div class="text-center" style="color: red;"><h6><a href="../home/index.php" class="text-reset"> << กลับไปหน้าหลัก </a> </h6></div>
-    
-    
+  <div class="backLink"><h6><a href="../home/index.php" class="text-reset"> << กลับไปหน้าหลัก </a> </h6>
 </div>
-
-
-
     <!-- ปิด cookie -->
-
 <?php
-
 }else{
    header("location:../logout.php");
 }
 ob_end_flush();
-
 ?>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -438,3 +446,77 @@ ob_end_flush();
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
 </html>
+
+<script>
+var ctx = document.getElementById('chart-checkin').getContext('2d');
+  var chart = new Chart(ctx, {
+      type: 'line',
+      data: {
+          labels: <?=json_encode($countTestCheckin)?>,
+          datasets: [{
+              label: 'คะแนนแต่ละรอบ',
+              backgroundColor: 'rgba(255, 0, 0, 0.2)',
+              borderColor: 'rgba(255, 0, 0, 0.2)',
+              data: <?=json_encode($g_scoreCheckin)?>
+          }]
+      },
+      options: {
+          scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero:true,
+              suggestedMax: 12,
+            }
+          }]
+        },
+        responsive: true
+      }
+  });
+var ctx = document.getElementById('chart-checkout').getContext('2d');
+  var chart = new Chart(ctx, {
+      type: 'line',
+      data: {
+          labels: <?=json_encode($countTestCheckout)?>,
+          datasets: [{
+              label: 'คะแนนแต่ละรอบ',
+              backgroundColor: 'rgba(255, 0, 0, 0.2)',
+              borderColor: 'rgba(255, 0, 0, 0.2)',
+              data: <?=json_encode($g_scoreCheckout)?>
+          }]
+      },
+      options: {
+          scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero:true,
+              suggestedMax: 10,
+            }
+          }]
+        },
+        responsive: true
+      }
+  });
+</script>
+
+<style>
+.cent{
+  text-align: center;
+}
+.main {
+  padding: 16px 0 0;
+  letter-spacing: 2px;
+  font-size: 40px;
+  text-align: center;
+  color: #551524;
+}
+.table{
+  background-color: #e4cbd3 !important;
+}
+.backLink {
+  margin: 20px 0;
+  text-align: center;
+}
+.text-reset {
+  font-size: 18px;
+}
+</style>

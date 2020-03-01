@@ -5,11 +5,6 @@ session_start();
 include("../../../database/database.php"); 
 $connection = mysqli_connect($localhost,$username,$pass,$database);
 mysqli_set_charset($connection,'utf8');
-date_default_timezone_set('Asia/Bangkok');
-$time = date("H:i:s");
-$today = date("Y-m-d");
-$_SESSION["time_start"] = $time;
-$_SESSION["today_start"] = $today;
 if (isset($_COOKIE["user"])) {
 ?>
 <!doctype html>

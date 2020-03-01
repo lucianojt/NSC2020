@@ -26,8 +26,7 @@ if (isset($_COOKIE["user"])) {
    <div class="row">
   <?php 
  
-  $sql = "SELECT* FROM gram_time WHERE id>1 LIMIT 35
-   ;";
+  $sql = "SELECT* FROM gram_time WHERE id>1 LIMIT 35";
   $result = mysqli_query($connection,$sql);
   if(!$result){
       echo 'ติดต่อไม่ได้';
