@@ -5,91 +5,15 @@ session_start();
 include("../database/database.php"); 
 $connection = mysqli_connect($localhost,$username,$pass,$database);
 mysqli_set_charset($connection,'utf8');
-
 ?>
 <!doctype html>
 <html lang="en">
   <head>
     <title>คะแนนการทดสอบ</title>
     <?php include("headU.php"); ?>
-
-        <style>
-    body {
-        background-image: url('../images/wall.png');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-       
-        }
-    .navbar{
-        background-color: #660223;
-        overflow: hidden;
-        position: fixed;
-        top: 0;
-        width: 100%;
-        
-    }
-   .nav-link {
-        color: white;
-    }
-    .navbar-toggler{
-        border-color: rgb(255,102,203);
-    }
-    .navbar-toggler-icon{
-        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,102,203, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-    }
-    .main {
-    margin-top: 56px;
-    text-align: center;
-    background-image: url('../images/wallpa.jpg');
-    color: white;
-    height: 80px;
-    padding: 21px; 
-    }
-    .pic{
-        background-color: #AE0F0F;
-        height: 180px;
-        color: white;
-        /* padding: 75px;  */
-        border-radius: 15px;
-    }
-
-    .word{
-    color: white;
-    background-color: #AE0F0F;
-    height: 140px;
-    border-radius: 15px;
-    text-align: center;
-    padding: 23px;
-    }
-    .test{
-    color: white;
-    background-color: #AE0F0F;
-    border-radius: 15px;
-    height: 70px;
-    text-align: center;
-    padding: 20px;
-    }
-    .aa{
-    font-size: 27px;
-    font-weight: bold;
-   }
-   
-   .time{
-    text-align: right;
-    
-   }
-.zx{
-    font-size: 27px;
-}
-    </style>
-   
-
    <div class="main">
     <h3>ผลสรุป</h3>
-    </div><br>
-
-
+    </div>
     <div class="container">
     <div class="link">
         <h6><a href="../home/index.php" class="text-reset">หน้าหลัก</a> > <a href="conclude.php" class="text-reset">ผลสรุป</a> > คะแนนการทดสอบ</h6>
@@ -218,8 +142,6 @@ mysqli_set_charset($connection,'utf8');
       }
 
       ?>
-  
-    
     <!-- close container -->
     </div>
     <br>
@@ -329,3 +251,70 @@ var myChart = new Chart(ctx, {
     }
 });
 </script>
+
+<style>
+body {
+  background-image: url('../images/wall.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+.navbar{
+  background-color: #660223;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  
+}
+.nav-link {
+  color: white;
+}
+.navbar-toggler{
+  border-color: rgb(255,102,203);
+}
+.navbar-toggler-icon{
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,102,203, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+.main {
+  margin-top: 56px;
+  text-align: center;
+  background-image: url('../images/wallpa.jpg');
+  color: white;
+  height: 80px;
+  padding: 21px; 
+}
+.pic{
+  background-color: #AE0F0F;
+  height: 180px;
+  color: white;
+  border-radius: 15px;
+}
+
+.word{
+  color: white;
+  background-color: #AE0F0F;
+  height: 140px;
+  border-radius: 15px;
+  text-align: center;
+  padding: 23px;
+}
+.test{
+  color: white;
+  background-color: #AE0F0F;
+  border-radius: 15px;
+  height: 70px;
+  text-align: center;
+  padding: 20px;
+}
+.aa{
+  font-size: 27px;
+  font-weight: bold;
+}
+.time{
+  text-align: right;
+}
+.zx{
+  font-size: 27px;
+}
+</style>

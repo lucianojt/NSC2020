@@ -270,7 +270,7 @@ p {
 }
 @media (max-width: 575.98px) {
   .container { 
-    width: 90%;
+    width: 100%;
   }
 }
 .questions {

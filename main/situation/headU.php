@@ -33,7 +33,7 @@
   </nav>
 <style>
 body {
-  background: #e4cbd3;
+  background: #FFEEEB;
 }
 .nav-link {
   color: black;

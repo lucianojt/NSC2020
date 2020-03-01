@@ -5,9 +5,6 @@ if(isset($_COOKIE["user"])){
 include("../../../database/database.php"); 
 $connection = mysqli_connect($localhost,$username,$pass,$database);
 mysqli_set_charset($connection,'utf8');
-
-
-    //var_dump($_SESSION);
 date_default_timezone_set('Asia/Bangkok');
 $ChecInCon_Din = date("d-m-Y");
 $ChecInCon_Tin = date("H:i:s");
@@ -20,23 +17,17 @@ $_SESSION["ChecInCon_Tin"] = $ChecInCon_Tin;
   <head>
     <title>บทสนทนา: การเช็คอิน</title>
     <?php include("../headU.php"); ?>
- 
-   <!-- start -->
-   
-   <div class="text"><h3>บทสนทนา: การเช็คอิน</h3></div><br>
+   <div class="text"><p>บทสนทนา: การเช็คอิน</p></div>
 
    <div class="container">
    <div class="link">
-   <h6><a href="../../../home/index.php" class="text-reset">หน้าหลัก</a> > <a href="../../situation.php" class="text-reset">สถานการณ์</a> > <a href="checkin.php" class="text-reset">การเช็คอิน</a> > บทสนทนา</h6>
+   <h5><a href="../../../home/index.php" class="text-reset">หน้าหลัก</a> > <a href="../../situation.php" class="text-reset">สถานการณ์</a> > <a href="checkin.php" class="text-reset">การเช็คอิน</a> > บทสนทนา</h5>
    </div>
    </div><br>
     <div class="container">
     <div class="ges">G = Guest แขก<p>R = Receptionist พนักงานต้อนรับ</p></div>
 
-    <?php
- include("../../../database/database.php"); 
- $connection = mysqli_connect($localhost,$username,$pass,$database);
- mysqli_set_charset($connection,'utf8');
+<?php
  $sql = "SELECT* FROM con_Topic WHERE topic = 'checkin' ";
  $result = mysqli_query($connection,$sql);
  if(!$result){
@@ -45,61 +36,55 @@ $_SESSION["ChecInCon_Tin"] = $ChecInCon_Tin;
     while($row = mysqli_fetch_assoc($result)){
     ?> 
     <div class="main">
-    <p><?php echo $row['con_nam'];?></p>
-     
+      <p><?php echo $row['con_nam'];?></p>
     </div>
-
     <div class="card">
-    <?php
-    $sql2 = "SELECT* FROM Colo_con_simDa WHERE con_id = ".$row['con_id']." AND name = 'checkin' ";
-    $result2 = mysqli_query($connection,$sql2);
-    ?> 
-    <div class="detail">
-    <div class="row">
-    <?php
-     while($row2 = mysqli_fetch_assoc($result2)){ 
-      $cutthai = explode(";",$row2['con_th']); 
-      $cuten = explode(";",$row2['con_en']); 
+      <?php
+      $sql2 = "SELECT* FROM Colo_con_simDa WHERE con_id = ".$row['con_id']." AND name = 'checkin' ";
+      $result2 = mysqli_query($connection,$sql2);
+      ?> 
+      <div class="detail">
+      <div class="row">
+      <?php
+          while($row2 = mysqli_fetch_assoc($result2)){ 
+            $cutthai = explode(";",$row2['con_th']); 
+            $cuten = explode(";",$row2['con_en']); 
 
-      $colorthai = explode(";",$row2['colo_th']); 
-      $coloren = explode(";",$row2['colo_ch']); 
+            $colorthai = explode(";",$row2['colo_th']); 
+            $coloren = explode(";",$row2['colo_ch']); 
 
-      $nunTHAI = count($cutthai);
-      $nunEN = count($cuten);
+            $nunTHAI = count($cutthai);
+            $nunEN = count($cuten);
 
-      $CTHAI = count($colorthai);
-      $CEN = count($coloren);
+            $CTHAI = count($colorthai);
+            $CEN = count($coloren);
+            ?>
+            <div class="col-1">
+              <?php echo $row2['con_spe']." :"; ?>
+              </div>
+              <div class="col-11">
 
-
-     ?>
-     <div class="col-1">
-      <?php echo $row2['con_spe']." :"; ?>
-      </div>
-      <div class="col-11">
-
-      <?php  
+              <?php  
                 for($i=0;$i<$nunTHAI;$i++){
                     echo  ' <span class="colorWord" style="background-color: '.$colorthai[$i].' ;"> '.$cutthai[$i].'</span>';
-                 }   echo '<br>';
-                 echo '<p class="chiWord" >'.$row2['con_ch'].'</p>';
-                 for($i=0;$i<$nunEN;$i++){
+                  }   echo '<br>';
+                  echo '<p class="chiWord" >'.$row2['con_ch'].'</p>';
+                  for($i=0;$i<$nunEN;$i++){
                     echo  ' <span class="colorWord" style="background-color: '.$coloren[$i].' ;"> '.$cuten[$i].'</span>';
-                 } 
+                  } 
                 ?>
+              </div>
+            <?php
+          }
+          ?> 
+          </div>
+        </div>
+      <div class="card-header">
+        <audio controls>
+              <source src="../../../sound/conver/checkin/<?php echo $row['con_sound'];?>" type="audio/mpeg">
+          </audio>
       </div>
-     
-     <?php
-     }
-     ?> 
-
     </div>
-    </div>
-  <div class="card-header">
-    <audio controls>
-           <source src="../../../sound/conver/checkin/<?php echo $row['con_sound'];?>" type="audio/mpeg">
-       </audio>
-  </div>
-</div>
 <br>
      <?php
   }
@@ -111,8 +96,8 @@ $_SESSION["ChecInCon_Tin"] = $ChecInCon_Tin;
 <div class="text-center" style="color: red;"><h6><a href="checkin.php" class="text-reset"> << ย้อนกลับไปหน้าที่แล้ว </a> </h6></div>
       <!-- ปิด cookie -->
   <?php
-}else{
-   header("location:../../../logout.php");
+} else {
+  header("location:../../../logout.php");
 }
 ob_end_flush();
 ?>
@@ -125,24 +110,6 @@ ob_end_flush();
 </html>
 
 <style>
-body {
-  background-image: url('../../../images/wall.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
-.navbar{
-  background-color: #660223;
-}
-.nav-link {
-  color: white;
-}
-.navbar-toggler{
-  border-color: rgb(255,102,203);
-}
-.navbar-toggler-icon{
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,102,203, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-}
 .detail{
   width: 100%;
   height: 400px;
@@ -165,12 +132,15 @@ body {
 .col-11{
   margin-top: 15px;
 }
-.text{
+.crop {
+
+}
+.text {
+  padding: 16px 0 0;
+  letter-spacing: 1px;
+  font-size: 40px;
   text-align: center;
-  background-image: url('../../../images/wallpa.jpg');
-  color: white;
-  height: 80px;
-  padding: 21px; 
+  color: #551524;
 }
 .ges{
   font-size: 20px;

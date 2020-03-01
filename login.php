@@ -128,6 +128,8 @@ body {
   text-align: left;
 }
 .detail_title {
+  /* color: #ba748b; */
+  letter-spacing: 2px;
   font-size: 36px;
   margin: 20px 0;
   cursor: default;

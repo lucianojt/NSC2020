@@ -167,21 +167,18 @@ unset($_SESSION["Checkin_Tout"]);
       คำศัพท์
       </div>
     </a>
-    <br><br>
     <a class="btn" href="sentence.php" role="button">
       <div class="word">
       <img src="../../../images/situation/senten.png" style="width: 40px; height: 40px;">
       ประโยค
       </div>
     </a>
-    <br><br>
     <a class="btn" href="conversation.php" role="button">
       <div class="word">
       <img src="../../../images/situation/conver.png" style="width: 40px; height: 40px;">
       บทสนทนา
       </div>
     </a>
-    <br><br>
     <a class="btn" href="exer_checkin.php" role="button">
       <div class="word">
       <img src="../../../images/situation/test.png" style="width: 40px; height: 40px;">
@@ -190,9 +187,8 @@ unset($_SESSION["Checkin_Tout"]);
     </a>
     </div>
   </div>
-   <div class="container">
-    </div><br>
-    <div class="text-center" style="color: red;"><h6><a href="../../situation.php" class="texts-reset"> << กลับไปหน้าสถานการณ์ </a> </h6></div>
+  <div class="backLink"><h6><a href="../../situation.php" class="text-reset"> << กลับไปหน้าสถานการณ์ </a> </h6>
+
 <!-- ปิด cookie -->
 <?php
 } else {
@@ -211,7 +207,7 @@ ob_end_flush();
 <style>
 .btn {
   color: white;
-  /* background-color: #75394d; */
+  margin: 8px 0;
   background-color: #7e1f35;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   width: 80%;
@@ -220,7 +216,6 @@ ob_end_flush();
 }
 .btn:hover {
   background-color: #551524;
-  /* background-color: #562535; */
   color: white;
   animation-name: example;
   animation-duration: 0.6s;
@@ -249,20 +244,22 @@ ob_end_flush();
   text-align: center;
 }
 .text {
+  padding: 16px 0 0;
   letter-spacing: 2px;
   font-size: 40px;
   text-align: center;
   color: #551524;
 }
 @media (max-width: 575.98px) {
-  .text-reset {
-    font-size: 17px;
-  }
   .btn {
     width: 100%;
   }
 }
-.texts-reset {
-  color: black;
+.backLink {
+  margin: 20px 0;
+  text-align: center;
+}
+.text-reset {
+  font-size: 18px;
 }
 </style>

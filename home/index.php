@@ -892,7 +892,7 @@ unset($_SESSION["Index_Tout"]);
     </div>
     <div class="detailhotel">
       <!-- <p style="margin: 0 20px 0 0">โรงแรม</p> -->
-      <p style="margin: 3px 0"><?php echo $nameHotel.' จังหวัด '.$ProHotel.' อำเภอ '.$dHotel;?></p>
+      <p class="detailhotels"><?php echo $nameHotel.' จังหวัด '.$ProHotel.' อำเภอ '.$dHotel;?></p>
     </div>
   </div>
 </div>
@@ -988,7 +988,8 @@ ob_end_flush();
 ?>
 <style>
 body {
-  background: #e4cbd3;
+  /* background: #e4cbd3; */
+  background: #FFEEEB;
 }
 .material-icons {
   position: absolute;
@@ -1009,6 +1010,7 @@ body {
   opacity: 0.5;
 }
 .textMain {
+  padding: 16px 0 0;
   letter-spacing: 2px;
   color: #551524;
   font-size: 45px;
@@ -1045,11 +1047,17 @@ body {
   margin: 20px 0 0;
   padding: 20px 0 0;
 }
+.detailhotels {
+  background: #e4cbd3;
+  margin: 3px 0;
+  padding: 9px;
+  border-radius: 7px;
+}
 .textWords {
   margin: 10px 0 0;
 }
 .picUser {
-  width: 10%;
+  width: 13%;
   height: auto;
   border-radius: 12%;
   margin: 0 17px 0 0;
@@ -1064,9 +1072,12 @@ body {
   }
 }
 .nameUserDetail {
-  margin: 0;
+  border-radius: 7px;
+  background: #e4cbd3;
+  margin: 6px 0;
+  padding: 9px;
 }
-.word{
+.word {
   color: white;
   background: #7e1f35;
   height: 140px;

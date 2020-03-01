@@ -5,13 +5,8 @@ if(isset($_COOKIE["user"])){
 include("../database/database.php"); 
 $connection = mysqli_connect($localhost,$username,$pass,$database);
 mysqli_set_charset($connection,'utf8');
-
 $room = $_SESSION["pincode"];
 $name = $_SESSION["username_user"];
-
-// var_dump($_SESSION);
-
-
 
 // เวลาออก
 date_default_timezone_set('Asia/Bangkok');
@@ -818,9 +813,6 @@ if(isset($_SESSION["OutCon_Tin"])){
   
   // var_dump($_SESSION);
 }
-
- 
-  
 unset($_SESSION["Conclude_Dout"]);
 unset($_SESSION["Conclude_Tout"]);
 //var_dump($_SESSION);
@@ -830,162 +822,23 @@ unset($_SESSION["Conclude_Tout"]);
 <html lang="en">
   <head>
     <title>ผลสรุป</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <?php include("headU.php"); ?>
+  <div class="main">
+    <p>ผลสรุป</p>
+  </div>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="../style.css">
-    <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
-    <link rel="icon" href="../images/icon_9.png" >  
-  </head>
-  <body>
-  <nav class="navbar navbar-expand-lg">
-    <a class="navbar-brand" href="../home/index.php">
-   <img src="../images/icon_9.png" width="40" height="30" class="d-inline-block align-top" alt="">
-</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <li class="nav-item active">
-            <a class="nav-link" href="situation.php">สถานการณ์ <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item active">
-        <a class="nav-link" href="gramma.php">ไวยากรณ์</a>
-        </li>
-        <li class="nav-item active">
-        <a class="nav-link" href="conclude.php">ผลสรุป</a>
-        </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-        <a  class="nav-link" href="../logout.php">ออกจากระบบ </a>
-        </form>
-    </div>
-    </nav>
-
-        <style>
-    body {
-        background-image: url('../images/wall.png');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-       
-        }
-    .navbar{
-        background-color: #660223;
-        /* overflow: hidden;
-        position: fixed;
-        top: 0;
-        width: 100%; */
-    }
-   
-  .nav-link {
-        color: white;
-    }
-    .navbar-toggler{
-        border-color: rgb(255,102,203);
-    }
-    .navbar-toggler-icon{
-        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,102,203, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-    }
-    .main {
-        text-align: center;
-    background-image: url('../images/wallpa.jpg');
-    color: white;
-    height: 80px;
-    padding: 21px; 
-    }
-  .pic{
-    
-    color: white;
-    background-color: #AE0F0F;
-    height: 140px;
-    border-radius: 15px;
-    padding: 25px;
-    float: inherit;
-    text-align: center;
-    font-weight: bold;
-  }
-
-    .word{
-    color: white;
-    background-color: #AE0F0F;
-    height: 140px;
-    border-radius: 15px;
-    text-align: center;
-    padding: 30px;
-    }
-    .test{
-    color: white;
-    background-color: #AE0F0F;
-    border-radius: 15px;
-    height: auto;
-    text-align: center;
-    padding: 20px;
-    }
-.col-8{
-    text-align: left;
-}
-    </style>
-   
-
-   <div class="main">
-    <h3>ผลสรุป</h3>
-    </div><br>
     <div class="container">
-    <div class="link">
-        <h6><a href="../home/index.php" class="text-reset">หน้าหลัก</a> > ผลสรุป</a></h6>
-   </div><br>
-
-
-
-   
-    <div class="test">
-    <?php 
- $code = 'Room_'.$room;
-
-//  echo $code."<br>";
-//  echo $name;
- $sql = "SELECT pic_usr ,name_usr, lname_usr , regis_hr.code , regis_hr.NHo_hr ,regis_hr.pro_hr
-         FROM $code , regis_hr
-         WHERE $code.code = regis_hr.code
-         AND user_usr = '$name' ";
- $result = mysqli_query($connection,$sql); 
- if(!$result){
-     echo 'ไม่สามารถเรียกได้';
- }else{
-    $row = mysqli_fetch_assoc($result);
-    ?> 
-     <div class="row">
-           <div class="col-4">
-             <img src="../images/userpic/<?php echo $row['pic_usr'];?>" style="width: 130px; height: 130px; border-radius: 50%;">
-           </div>
-         <div class="col-8">
-           <h4><?php echo $row['name_usr']." ".$row['lname_usr'];?></h4>
-           <?php echo $row['NHo_hr']." ".$row['pro_hr'];?>
-           <p>Room: <?php echo $row['code'];?></p>
-         </div>
-        </div>
-
-    <?php
-     mysqli_close($connection);
- }
-
-?>
-    </div>
-    <br>
-
+    <div class="link" style="margin: 0 0 20px">
+        <h5><a href="../home/index.php" class="text-reset">หน้าหลัก</a> > ผลสรุป</a></h5>
+   </div>
 <div class="row">
     <div class="col">
 
          
     <a href="result.php" role="button">
-         <div class="pic">
+         <div class="word">
          <img src="../images/ranking.png" alt="user" width="61" height="61">
-    <p>คะแนนการทดสอบ</p>
+    <p style="margin: 10px 0 0">คะแนนการทดสอบ</p>
 
          </div>
     </a>
@@ -995,7 +848,7 @@ unset($_SESSION["Conclude_Tout"]);
         <a href="history.php" role="button">
         <div class="word">
         <img src="../images/break-time.png" style="width: 61px; height: 61px;">
-        <p>การเรียนรู้</p>
+        <p style="margin: 10px 0 0">การเรียนรู้</p>
         </div>
         </a>
     </div>
@@ -1007,9 +860,9 @@ unset($_SESSION["Conclude_Tout"]);
 
          
     <a href="LevelSti.php" role="button">
-         <div class="pic">
+         <div class="word">
          <img src="../images/home/situation.png" alt="user" width="61" height="61">
-    <p>ระดับสถานการณ์</p>
+    <p style="margin: 10px 0 0">ระดับสถานการณ์</p>
 
          </div>
     </a>
@@ -1019,18 +872,12 @@ unset($_SESSION["Conclude_Tout"]);
         <a href="setting.php" role="button">
         <div class="word">
         <img src="../images/home/settings.png" style="width: 61px; height: 61px;">
-        <p>แก้ไขข้อมูล</p>
+        <p style="margin: 10px 0 0">แก้ไขข้อมูล</p>
         </div>
         </a>
     </div>
 </div>
-
-   
-
-    
-<br>
-    <div class="text-center" style="color: red;"><h6><a href="../home/index.php" class="text-reset"> << กลับไปหน้าหลัก </a> </h6></div>
-    
+  <div class="backLink"><h6><a href="../home/index.php" class="text-reset"> << กลับไปหน้าหลัก </a> </h6>
     <!-- close container -->
    </div>
 </div>
@@ -1052,3 +899,57 @@ ob_end_flush();
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
 </html>
+<style>
+.main {
+  padding: 16px 0 0;
+  letter-spacing: 2px;
+  font-size: 40px;
+  text-align: center;
+  color: #551524;
+}
+.word {
+  height: 100%;
+  position: relative;
+  padding: 20px 0;
+  background: #7e1f35;
+  text-align: center;
+  color: white;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.word:hover {
+  background-color: #551524;
+  color: white;
+  animation-name: example;
+  animation-duration: 0.6s;
+}
+@keyframes example {
+  0% {
+    left: 0%;
+  }
+  50% {
+    left: 2%;
+  }
+  75% {
+    left: -2%;
+  }
+  100% {
+    left: 0%;
+  }
+}
+.test{
+  color: white;
+  background-color: #AE0F0F;
+  border-radius: 15px;
+  height: auto;
+  text-align: center;
+  padding: 20px;
+}
+.backLink {
+  margin: 20px 0;
+  text-align: center;
+}
+.text-reset {
+  font-size: 18px;
+}
+</style>

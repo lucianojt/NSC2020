@@ -105,65 +105,13 @@ unset($_SESSION["checkSen_Tout"]);
   <head>
     <title>การเช็คอิน</title>
     <?php include("../headU.php"); ?>
-        <style>
-    body {
-        background-image: url('../../../images/wall.png');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-       
-        }
-    .navbar{
-        background-color: #660223;
-        
-    }
-  .nav-link{
-        color: white;
-    }
-    .navbar-toggler{
-        border-color: rgb(255,102,203);
-    }
-    .navbar-toggler-icon{
-        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,102,203, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-    }
-    .btn:hover {
-  background-color: #941414;
-   }
-   
-    .btn {
-    color: white;
-    background-color: #AE0F0F;
-    width: 80%;
-    text-align: left;
-    }  
-    .word{
-        height: 65px;
-        padding: 13px; 
-        word-spacing: 0.5cm; 
-       font-size: 20px;
-      
-    }
-   .gu{
-    text-align: center;
-    /* padding-left: 10px; */
-   }
-   .text{
-    text-align: center;
-    background-image: url('../../../images/wallpa.jpg');
-    color: white;
-    height: 80px;
-    padding: 21px; 
-   } 
-
-   
-    </style>
    
    <!-- start -->
    
-   <div class="text"><h3>การเช็คอิน</h3></div><br>
+   <div class="text"><p>การเช็คอิน</p></div>
    <div class="container">
    <div class="link">
-   <h6><a href="../../../home/index.php" class="text-reset">หน้าหลัก</a> > <a href="../../situation.php" class="text-reset">สถานการณ์</a> > <a href="checkin.php" class="text-reset">เช็คอิน</a> > ประโยค </h6>
+   <h5><a href="../../../home/index.php" class="text-reset">หน้าหลัก</a> > <a href="../../situation.php" class="text-reset">สถานการณ์</a> > <a href="checkin.php" class="text-reset">เช็คอิน</a> > ประโยค </h5>
    </div>
    
    </div>
@@ -179,30 +127,23 @@ unset($_SESSION["checkSen_Tout"]);
     การลงทะเบียนเข้าพัก
     </div>
     </a>
-    <br><br>
     <a class="btn" href="Payment.php" role="button">
     <div class="word">
     <img src="../../../images/situation/pay.png" style="width: 40px; height: 40px;">
     ชำระเงิน
     </div>
     </a>
-    <br><br>
     <a class="btn" href="other.php" role="button">
     <div class="word">
     <img src="../../../images/situation/other.png" style="width: 40px; height: 40px;">
     อื่นๆ
     </div>
     </a>
-    <br><br>
-    
-    
-    
     </div>
     </div>
    
-    <br>
-    <div class="text-center" style="color: red;"><h6><a href="checkin.php" class="text-reset"> << ย้อนกลับไปหน้าที่แล้ว </a> </h6></div>
-     <!-- ปิด cookie -->
+  <div class="backLink"><h6><a href="checkin.php" class="text-reset"> << ย้อนกลับไปหน้าที่แล้ว </a> </h6>
+    <!-- ปิด cookie -->
 
 <?php
 
@@ -218,3 +159,62 @@ ob_end_flush();
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
 </html>
+<style>
+.btn {
+  color: white;
+  margin: 8px 0;
+  background-color: #7e1f35;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 80%;
+  text-align: left;
+  position: relative;
+}
+.btn:hover {
+  background-color: #551524;
+  color: white;
+  animation-name: example;
+  animation-duration: 0.6s;
+}
+@keyframes example {
+  0% {
+    left: 0%;
+  }
+  50% {
+    left: 2%;
+  }
+  75% {
+    left: -2%;
+  }
+  100% {
+    left: 0%;
+  }
+}
+.word {
+  height: 65px;
+  padding: 13px; 
+  word-spacing: 0.5cm; 
+  font-size: 20px;
+}
+.gu {
+  text-align: center;
+}
+.text {
+  padding: 16px 0 0;
+  letter-spacing: 2px;
+  font-size: 40px;
+  text-align: center;
+  color: #551524;
+}
+.backLink {
+  margin: 20px 0;
+  text-align: center;
+}
+.text-reset {
+  font-size: 18px;
+}
+@media (max-width: 575.98px) {
+  .btn {
+    width: 100%;
+  }
+}
+</style>
