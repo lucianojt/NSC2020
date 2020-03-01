@@ -11,73 +11,16 @@ mysqli_set_charset($connection,'utf8');
   <head>
     <title>ประวัติพนักงาน</title>
     <?php include("head.php"); ?>
-    <style>
-     body {
-        background-image: url('../images/wall.png');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-       
-        }
-    .navbar{
-      background-color: #660223;
-        /* overflow: hidden;
-        position: fixed; */
-        top: 0;
-        width: 100%;
-    }
-    .nav-link {
-        color: white;
-    }
-    .navbar-toggler{
-        border-color: rgb(255,102,203);
-    }
-    .navbar-toggler-icon{
-        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,102,203, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-    }
-    .text{
-      /* margin-top: 56px; */
-    text-align: center;
-    background-image: url('../images/wallpa.jpg');
-    color: white;
-    height: 80px;
-    padding: 21px;
-   }
-   .table{
-        text-align: center;
-        background-color: #F7DAD2;
-    }
-   .table{
-        background-color: #F3C4B7;
-    }
-   .colT{
-        background-color: rgba(54, 162, 235, 0.2);
-        height: 50px;
-        width: 40%;
-        padding: 15px; 
-        border-radius: 10px 30px;
-    }
-   .col-md-5{
-    background-color: #92a8d1;
-   }
-  .col-md-7{
-    background-color: coral;
-     height: 100px;
-  }
-  .table-responsive{
-      height: 300px;
-      overflow: scroll;
-    }
-    </style>
+ 
     <?php 
 $room = $_SESSION["code"] ;
 $name = $_GET['name'];
 ?>
      
-      <div class="text"><h3>พนักงาน: <?php echo $name;?></h3></div><br>
+      <div class="text"><p>พนักงาน: <?php echo $name;?></p></div>
       <div class="container">
       <div class="link">
-        <h6><a href="MGRoom_hr.php" class="text-reset">จัดการห้อง</a> > <a href="history.php" class="text-reset">ประวัติพนักงาน</a> > ข้อมูลส่วนตัว</h6>
+        <h5><a href="MGRoom_hr.php" class="text-reset">จัดการห้อง</a> > <a href="history.php" class="text-reset">ประวัติพนักงาน</a> > ข้อมูลส่วนตัว</h5>
       </div>
 
 <!-- close container -->
@@ -96,14 +39,12 @@ if(!$result){
   // echo 'connect ได้';
 ?>
 <div class="container" >
-<div class="jumbotron" style="background-color:#ECDEE3">
+<div class="displayScore" style="background-color:#ECDEE3">
   <!-- <p>Bootstrap is the most popular HTML, CSS...</p>  -->
-  <div class="row">
-    <div class="col">
-    <img src="../images/userpic/<?php echo $row['pic_usr'];?>" class=" mx-auto d-block" width="280" height="190" style=" border-radius: 13%;">
-    </div>
-    <div class="col">
-      <h4>ผลคะแนนก่อนเรียน</h4>
+  <div class="imgAnScore">
+    <img class="image" src="../images/userpic/<?php echo $row['pic_usr'];?>" class=" mx-auto d-block">
+    <div class="scores">
+      <p>ผลคะแนนก่อนเรียน</p>
       <?php 
       if($row['pretest'] == -1){
         ?>
@@ -136,11 +77,8 @@ if(!$result){
       <?php
       }
       ?>
-
-
-   
       <br>
-      <h4>ผลคะแนนหลังเรียน</h4>
+      <p>ผลคะแนนหลังเรียน</p>
       <?php 
       $sql2 = "SELECT posttest FROM $aaaa WHERE name_usr = '$name'";
       $result2 = mysqli_query($connection,$sql2);
@@ -402,3 +340,66 @@ if(isset($namee)){
 //ob_end_flush();
 include('../footer.php'); 
 ?>
+
+<style>
+.text{
+  padding: 16px 0 0;
+  letter-spacing: 2px;
+  font-size: 40px;
+  text-align: center;
+  color: #551524;
+}
+.table{
+  text-align: center;
+  background-color: #F7DAD2;
+}
+.table{
+  background-color: #F3C4B7;
+}
+.colT{
+  background-color: rgba(54, 162, 235, 0.2);
+  height: 50px;
+  width: 40%;
+  padding: 15px; 
+  border-radius: 10px 30px;
+}
+.col-md-5{
+background-color: #92a8d1;
+}
+.col-md-7{
+background-color: coral;
+height: 100px;
+}
+.table-responsive{
+height: 300px;
+overflow: scroll;
+}
+.displayScore {
+  margin: 0 0 30px;
+  padding: 20px;
+}
+.imgAnScore {
+  display: flex;
+}
+.image {
+  margin: 0 20px 0 0;
+  object-fit: cover;
+  width: 25%;
+  height: auto;
+}
+.displayScore {
+  font-size: 20px;
+}
+@media (max-width: 575.98px) {
+  .displayScore {
+    font-size: 18px;
+  }
+  .imgAnScore {
+    display: block;
+  }
+  .image {
+    width: 100%;
+    margin: 0 0 20px;
+  }
+}
+</style>

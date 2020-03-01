@@ -11,10 +11,10 @@ if(isset($_COOKIE["hr"])){
   <head>
     <title>เวลาการเข้าใช้งาน</title>
 <?php include("head.php"); ?>
-      <div class="text"><h3>เวลาการเข้าใช้งาน</h3></div>
+      <div class="text"><p>เวลาการเข้าใช้งาน</p></div>
       <div class="container">
       <div class="link">
-        <h6><a href="MGRoom_hr.php" class="text-reset">จัดการห้อง</a> > เวลาการเข้าใช้งาน</a></h6>
+        <h5><a href="MGRoom_hr.php" class="text-reset">จัดการห้อง</a> > เวลาการเข้าใช้งาน</a></h5>
    </div>
       </div>
       <div class="container">
@@ -91,31 +91,25 @@ ob_end_flush();
 ?>
 
 <style>
-.text{
+.text {
+  padding: 16px 0 0;
+  letter-spacing: 2px;
+  font-size: 40px;
   text-align: center;
-  height: 80px;
-  padding: 21px; 
+  color: #551524;
 }
-.word{
+.word {
   color: white;
   height: 140px;
   border-radius: 15px;
   text-align: center;
   padding: 23px;
 }
-.test{
-  color: white;
-  background-color: #AE0F0F;
-  border-radius: 15px;
-  height: 70px;
-  text-align: center;
-  padding: 20px;
-}
-.big{
+.big {
   text-align: center;
   font-size: 25px;
 }
-.table{
+.table {
   background-color: #F7DAD2;
 }
 .table-responsive{
