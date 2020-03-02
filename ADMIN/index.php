@@ -18,7 +18,8 @@ if(isset($_COOKIE["minny"])){
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
-    <link rel="icon" href="../images/icon_9.png" >  
+    <link rel="icon" href="../images/logoPJ.png" >
+
   </head>
   <body>
   
@@ -41,7 +42,7 @@ if(isset($_COOKIE["minny"])){
       <div class="container">
     
       </div>
-      <div class="text"><h3>ADMIN</h3></div>
+      <div class="text"><p>ADMIN</p></div>
 <div class="container"><br>
 <?php 
 
@@ -85,38 +86,31 @@ while($row = mysqli_fetch_assoc($result)){
   }
   include('../footer.php'); ?>
 <style>
-.navbar{
-  background-color: #660223;
+body {
+  background: #FFEEEB;
 }
 .nav-link {
-  color: white;
+  color: black;
 }
-.navbar-toggler{
-  border-color: rgb(255,102,203);
+.navbar{
+  background-color: #e4cbd3 !important;
+  font-size: 18px;
+  position: sticky;
+  top: 0;
 }
-.navbar-toggler-icon{
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,102,203, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-}
-body{
-  background-image: url('../images/wall.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
-.text{
+.text {
+  padding: 16px 0 0;
+  letter-spacing: 2px;
+  font-size: 40px;
   text-align: center;
-  background-image: url('../images/wallpa.jpg');
-  color: white;
-  height: 80px;
-  padding: 21px; 
+  color: #551524; 
 }
-.word{
-  color: white;
-  background-color: #AE0F0F;
-  height: 164px;
-  border-radius: 15px;
+.word {
+  padding: 20px;
+  background: #7e1f35;
   text-align: center;
-  padding: 23px;
-  width: 350px;
+  color: white;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 </style>

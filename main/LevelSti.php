@@ -501,7 +501,7 @@ var ctx = document.getElementById('chart-checkout').getContext('2d');
 </script>
 
 <style>
-.cent{
+.cent {
   text-align: center;
 }
 .main {

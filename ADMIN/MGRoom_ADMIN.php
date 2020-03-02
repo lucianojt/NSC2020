@@ -23,12 +23,12 @@ if(isset($_COOKIE["minny"])){
       if(!$result2){
       ?><div class="text"><h3>จัดการห้อง</h3></div><?php
       }else{
-        ?>  <div class="text"><h3>โรงแรม: <?php echo $row2['NHo_hr'];?></h3></div><?php
+        ?>  <div class="text"><p>โรงแรม: <?php echo $row2['NHo_hr'];?></p></div><?php
       }
       ?><br>
       <div class="container">
        <div class="link">
-        <h6><a href="index.php" class="text-reset">ADMIN</a> > ข้อมูลโรงแรม</a></h6>
+        <h5><a href="index.php" class="text-reset">ADMIN</a> > ข้อมูลโรงแรม</a></h5>
    </div>
       </div>
      
@@ -86,8 +86,8 @@ if(!$result){
 
 
     <a href="data_situation.php" role="button">
-    <div class="test">
-    <p>ข้อมูลสถานการณ์</p>
+    <div class="word">
+    <p style="font-size: 18px; margin: 0">ข้อมูลสถานการณ์</p>
     </div>
     </a><br>
 
@@ -99,46 +99,41 @@ if(!$result){
 ?>
 </div>
 <style>
-.navbar{
-  background-color: #660223;
-}
-.nav-link {
-  color: white;
-}
-.navbar-toggler{
-  border-color: rgb(255,102,203);
-}
-.navbar-toggler-icon{
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,102,203, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-}
-body{
-  background-image: url('../images/wall.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
 .text{
+  padding: 16px 0 0;
+  letter-spacing: 2px;
+  font-size: 40px;
   text-align: center;
-  background-image: url('../images/wallpa.jpg');
-  color: white;
-  height: 80px;
-  padding: 21px; 
+  color: #551524;
 }
-.word{
-  color: white;
-  background-color: #AE0F0F;
-  height: 140px;
-  border-radius: 15px;
+.word {
+  position: relative;
+  padding: 20px 0;
+  background: #7e1f35;
   text-align: center;
-  padding: 23px;
+  color: white;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-.test{
+.word:hover {
+  background-color: #551524;
   color: white;
-  background-color: #AE0F0F;
-  border-radius: 15px;
-  height: 70px;
-  text-align: center;
-  padding: 20px;
+  animation-name: example;
+  animation-duration: 0.6s;
+}
+@keyframes example {
+  0% {
+    left: 0%;
+  }
+  50% {
+    left: 2%;
+  }
+  75% {
+    left: -2%;
+  }
+  100% {
+    left: 0%;
+  }
 }
 </style>
 <?php 

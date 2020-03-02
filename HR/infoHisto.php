@@ -374,10 +374,6 @@ height: 100px;
 height: 300px;
 overflow: scroll;
 }
-.displayScore {
-  margin: 0 0 30px;
-  padding: 20px;
-}
 .imgAnScore {
   display: flex;
 }
@@ -389,6 +385,8 @@ overflow: scroll;
 }
 .displayScore {
   font-size: 20px;
+  margin: 0 0 30px;
+  padding: 20px;
 }
 @media (max-width: 575.98px) {
   .displayScore {

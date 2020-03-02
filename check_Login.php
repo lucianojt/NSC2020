@@ -12,13 +12,6 @@ $b = $_POST['pass'];
 if ($a === '' && $b === '') {
   header("location:login.php"); 
 }
-$sql5="SELECT * FROM ADMIN WHERE user = '$a' AND password = '$b'  ";
-$result5 = mysqli_query($connection,$sql5);
-$row5 = mysqli_fetch_array($result5);
-if ($row5 == TRUE) {
-  setcookie("minny","minny", time()+ 3600*5);
-  header("location:ADMIN/index.php");
-}
 $sql= "SELECT user_usr,code
        FROM regis_usr
        WHERE user_usr = '$a'
@@ -26,18 +19,16 @@ $sql= "SELECT user_usr,code
 $result = mysqli_query($connection,$sql);
 $row = mysqli_fetch_array($result);
 if(!$row){
-  header("location:login.php"); 
+  $sql1 = "SELECT * FROM ADMIN WHERE user = '$a' AND password = '$b'";
+  $result1 = mysqli_query($connection,$sql1);
+  $row1 = mysqli_fetch_array($result1);
+  if ($row1 > 0) {
+    setcookie("minny","minny", time()+ 3600*5);
+    header("location:ADMIN/index.php");
+  }else {
+    header("location:logout.php");
+  }
 ?>
- <!-- <br><br><br><br><br>
-      <div class="container" >
-      <div class="card">
-      <div class="card-body "  style="text-align: center; background-color: #FECCCC;"  >
-      <div class="centeredd">รหัสผ่านไม่ถูกต้อง</div>
-      </div>
-    </div><br><br>
-       <div class="link">
-           <a href="login.php" class="btn btn-outline-dark">ตกลง</a>
-       </div> -->
 <?php
 }else{
   $_SESSION["username_user"] = $row["user_usr"];

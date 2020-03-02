@@ -9,72 +9,12 @@ if(isset($_COOKIE["minny"])){
   <head>
     <title>ข้อมูลการเข้าใช้งาน</title>
     <?php include("head.php"); ?>
-    <style>
-     body {
-        background-image: url('../images/wall.png');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-       
-        }
-    .navbar{
-      background-color: #660223;
-        overflow: hidden;
-        position: fixed;
-        top: 0;
-        width: 100%;
-    }
-    .nav-link {
-        color: white;
-    }
-    .navbar-toggler{
-        border-color: rgb(255,102,203);
-    }
-    .navbar-toggler-icon{
-        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,102,203, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-    }
-    .text{
-      margin-top: 56px;
-    text-align: center;
-    background-image: url('../images/wallpa.jpg');
-    color: white;
-    height: 80px;
-    padding: 21px; 
-   }
-   .table-responsive{
-      height: 500px;
-      overflow: scroll;
-    }
-  .word{
-    color: white;
-    background-color: #AE0F0F;
-    height: 140px;
-    border-radius: 15px;
-    text-align: center;
-    padding: 23px;
-    }
-    .test{
-    color: white;
-    background-color: #AE0F0F;
-    border-radius: 15px;
-    height: 70px;
-    text-align: center;
-    padding: 20px;
-    }
-    .big{
-      text-align: center;
-      font-size: 25px;
-
-    }
-    .table{
-        background-color: #F7DAD2;
-    }
-    </style>
+  
      
-      <div class="text"><h3>ข้อมูลการเข้าใช้งาน</h3></div><br>
+      <div class="text"><p>ข้อมูลการเข้าใช้งาน</p></div>
       <div class="container">
       <div class="link">
-        <h6><a href="index.php" class="text-reset">ADMIN</a> > <a href="MGRoom_ADMIN.php?code=<?php echo  $room;?>" class="text-reset">จัดการห้อง</a> > ข้อมูลการเข้าใช้งาน</a></h6>
+        <h5><a href="index.php" class="text-reset">ADMIN</a> > <a href="MGRoom_ADMIN.php?code=<?php echo  $room;?>" class="text-reset">จัดการห้อง</a> > ข้อมูลการเข้าใช้งาน</a></h5>
    </div>
       </div>
       
@@ -145,3 +85,40 @@ if(isset($_COOKIE["minny"])){
     header("location:../logout_hr.php");
   }
   include('../footer.php'); ?>
+<style>
+.text{
+  padding: 16px 0 0;
+  letter-spacing: 2px;
+  font-size: 40px;
+  text-align: center;
+  color: #551524;
+}
+.table-responsive{
+height: 500px;
+overflow: scroll;
+}
+.word{
+color: white;
+background-color: #AE0F0F;
+height: 140px;
+border-radius: 15px;
+text-align: center;
+padding: 23px;
+}
+.test{
+color: white;
+background-color: #AE0F0F;
+border-radius: 15px;
+height: 70px;
+text-align: center;
+padding: 20px;
+}
+.big{
+text-align: center;
+font-size: 25px;
+
+}
+.table{
+background-color: #F7DAD2;
+}
+</style>

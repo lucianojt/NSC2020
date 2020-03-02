@@ -177,10 +177,7 @@ $(document).on('click','.previous',function(){
 </script>
 <style>
 body {
-  background: #F5F5F5;
-}
-.bg-light {
-  background-color: #F5F5F5!important;
+  background: #FFEEEB;
 }
 .material-icons {
   position: absolute;
@@ -189,7 +186,10 @@ body {
   color: black;
 }
 .navbar{
-  background-color: #F5F5F5;
+  background-color: #e4cbd3 !important;
+  font-size: 18px;
+  position: sticky;
+  top: 0;
 }
 .questiona {
   background: black;

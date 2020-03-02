@@ -11,44 +11,6 @@ mysqli_set_charset($connection,'utf8');
   <head>
     <title>ข้อมูลสถานการณ์</title>
     <?php include("head.php"); ?>
-    <style>
-     body {
-        background-image: url('../images/wall.png');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-       
-        }
-    .navbar{
-      background-color: #660223;
-        /* overflow: hidden;
-        position: fixed; */
-        top: 0;
-        width: 100%;
-    }
-    .nav-link {
-        color: white;
-    }
-    .navbar-toggler{
-        border-color: rgb(255,102,203);
-    }
-    .navbar-toggler-icon{
-        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,102,203, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-    }
-    .text{
-      /* margin-top: 56px; */
-    text-align: center;
-    background-image: url('../images/wallpa.jpg');
-    color: white;
-    height: 80px;
-    padding: 21px;
-
-
-   }
-   .table{
-        background-color: #DEDADB;
-    }
-    </style>
     <?php 
 $room = $_SESSION["code"] ;
 $name = $_GET['name'];
@@ -62,10 +24,10 @@ if(!$row8){
 }
 ?>
      
-      <div class="text"><h3>พนักงาน: <?php echo $name."(".$row8['user_usr'].")";?></h3></div><br>
+      <div class="text"><p>พนักงาน: <?php echo $name."(".$row8['user_usr'].")";?></p></div>
       <div class="container">
       <div class="link">
-        <h6><a href="MGRoom_hr.php" class="text-reset">จัดการห้อง</a> > <a href="data_situation.php" class="text-reset">ข้อมูลสถานการณ์</a> > ข้อมูล</h6>
+        <h5><a href="MGRoom_hr.php" class="text-reset">จัดการห้อง</a> > <a href="data_situation.php" class="text-reset">ข้อมูลสถานการณ์</a> > ข้อมูล</h5>
       </div>
       </div>
 <div class="container">
@@ -78,7 +40,10 @@ if(!$row8){
         echo 'เกิดข้อผิดพลาดบางอย่าง';
     }else{
 
-    $sql2 = "SELECT * FROM scoreCheckin WHERE user_usr = '".$row['user_usr']."' ";
+    // $sql2 = "SELECT * FROM scoreCheckin WHERE user_usr = '".$row['user_usr']."' ";
+    // $result2 = mysqli_query($connection,$sql2);
+    // $row2 = mysqli_fetch_assoc($result2);
+    $sql2 = "SELECT * FROM scoreCheckin WHERE user_usr = '$name'  AND code = '$room'";
     $result2 = mysqli_query($connection,$sql2);
     $row2 = mysqli_fetch_assoc($result2);
     if(!$row2){
@@ -91,6 +56,7 @@ if(!$row8){
       <th class="cent" scope="col">เกณฑ์</th>
       <th class="cent" scope="col">คะแนนที่ได้(มากที่สุด)</th>
       <th class="cent" scope="col">จำนวนครั้งที่ทำแบบทดสอบ</th>
+      <th class="cent" scope="col">กราฟ</th>
     </tr>
   </thead>
   <tbody>
@@ -100,9 +66,11 @@ if(!$row8){
       <td class="cent">-</td>
       <td class="cent">-</td>
       <td class="cent">-</td>
+      <td class="cent">-</td>
     </tr>
         <tr>
         <th scope="row" style="color: #660223;">การแจ้งออกจากโรงแรม (เช็คเอาท์)</th>
+        <td class="cent">-</td>
         <td class="cent">-</td>
         <td class="cent">-</td>
         <td class="cent">-</td>
@@ -326,6 +294,7 @@ if(!$row8){
       <th class="cent" scope="col">เกณฑ์</th>
       <th class="cent" scope="col">คะแนนที่ได้(มากที่สุด)</th>
       <th class="cent" scope="col">จำนวนครั้งที่ทำแบบทดสอบ</th>
+      <th class="cent" scope="col">กราฟ</th>
     </tr>
   </thead>
   <tbody>
@@ -336,6 +305,7 @@ if(!$row8){
       <?php if(!$row61){
           ?>
           <td class="cent">-</td>
+      <td class="cent">-</td>
       <td class="cent">-</td>
       <td class="cent">-</td>
           <?php
@@ -359,6 +329,13 @@ if(!$row8){
      <td class="cent"><?php echo $row611." ครั้ง";?></td>
        <?php
        }
+        ?>
+          <td class="cent">
+            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#checkin">
+            ดูกราฟ
+          </button>
+          </td>
+        <?php
       }
       ?>  
     </tr>
@@ -368,6 +345,7 @@ if(!$row8){
         <?php if(!$row101){
           ?>
           <td class="cent">-</td>
+      <td class="cent">-</td>
       <td class="cent">-</td>
       <td class="cent">-</td>
           <?php
@@ -391,6 +369,13 @@ if(!$row8){
      <td class="cent"><?php echo $row1011." ครั้ง";?></td>
        <?php
        }
+        ?>
+          <td class="cent">
+            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#checkout">
+              ดูกราฟ
+            </button>
+          </td>
+        <?php
       }
       ?>  
     </tr>
@@ -401,9 +386,74 @@ if(!$row8){
       
     }
     ?>
-      
+<!-- graph checkin -->
+<div class="modal fade" id="checkin" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">เช็คอิน</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <?php
+      $sqlCheckin = "SELECT * FROM scoreCheckin WHERE user_usr = '$usermm' AND code = '$room' ORDER BY `id` ASC ";
+      $resultCheckin = mysqli_query($connection,$sqlCheckin);
+      while($rowCheckin = mysqli_fetch_assoc($resultCheckin)){
+        $g_scoreCheckin[] = $rowCheckin['score_checkin'];
+      }
+      $countTest = count($g_scoreCheckin);
+      $x = 1;
+      $countTestCheckin = [];
+      while($x <= $countTest) {
+        array_push($countTestCheckin, $x);
+        $x++;
+      }
+      ?>
+        <canvas id="chart-checkin"></canvas>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" data-dismiss="modal">ตกลง</button>
+      </div>
+    </div>
+  </div>
 </div>
-<div class="text-center" style="color: red;"><h6><a href="MGRoom_hr.php" class="text-reset"> << กลับไปหน้าจัดการห้อง </a> </h6></div>
+<!-- graph checkout -->
+<div class="modal fade" id="checkout" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">การแจ้งออกจากโรงแรม (เช็คเอาท์)</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <?php
+      $sqlCheckout = "SELECT * FROM scoreOut WHERE user_usr = '$usermm' AND code = '$room' ORDER BY `id` ASC ";
+      $resultCheckout = mysqli_query($connection,$sqlCheckout);
+      while($rowCheckout = mysqli_fetch_assoc($resultCheckout)){
+        $g_scoreCheckout[] = $rowCheckout['score_out'];
+      }
+      $countTestOut = count($g_scoreCheckout);
+      $x = 1;
+      $countTestCheckout = [];
+      while($x <= $countTestOut) {
+        array_push($countTestCheckout, $x);
+        $x++;
+      }
+      ?>
+        <canvas id="chart-checkout"></canvas>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" data-dismiss="modal">ตกลง</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+  <div class="backLink"><h6><a href="../home/index.php" class="text-reset"> << กลับไปหน้าหลัก </a> </h6>
 
  <!-- ปิด cookie -->
 
@@ -414,3 +464,72 @@ if(!$row8){
 }
 include('../footer.php');
 ob_end_flush(); ?>
+<script>
+var ctx = document.getElementById('chart-checkin').getContext('2d');
+  var chart = new Chart(ctx, {
+      type: 'line',
+      data: {
+          labels: <?=json_encode($countTestCheckin)?>,
+          datasets: [{
+              label: 'คะแนนแต่ละรอบ',
+              backgroundColor: '#5ba8a0',
+              borderColor: '#385284',
+              data: <?=json_encode($g_scoreCheckin)?>
+          }]
+      },
+      options: {
+          scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero:true,
+              suggestedMax: 12,
+            }
+          }]
+        },
+        responsive: true
+      }
+  });
+var ctx = document.getElementById('chart-checkout').getContext('2d');
+  var chart = new Chart(ctx, {
+      type: 'line',
+      data: {
+          labels: <?=json_encode($countTestCheckout)?>,
+          datasets: [{
+              label: 'คะแนนแต่ละรอบ',
+              backgroundColor: '#5ba8a0',
+              borderColor: '#385284',
+              data: <?=json_encode($g_scoreCheckout)?>
+          }]
+      },
+      options: {
+          scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero:true,
+              suggestedMax: 10,
+            }
+          }]
+        },
+        responsive: true
+      }
+  });
+</script>
+<style>
+.text {
+  padding: 16px 0 0;
+  letter-spacing: 2px;
+  font-size: 40px;
+  text-align: center;
+  color: #551524;
+}
+.table{
+  background-color: #e4cbd3 !important;
+}
+.backLink {
+  margin: 20px 0;
+  text-align: center;
+}
+.text-reset {
+  font-size: 18px;
+}
+</style>

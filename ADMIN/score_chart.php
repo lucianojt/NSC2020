@@ -10,84 +10,12 @@ $room = $_SESSION["code"] ;
 <html lang="en">
   <head>
     <title>คะแนนการทดสอบ</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-    <link rel="stylesheet" href="../style.css">
-  </head>
-  <body>
-  <nav class="navbar navbar-expand-lg">
-    <a class="navbar-brand" href="../home/index.php">
-   <img src="../images/icon_9.png" width="40" height="30" class="d-inline-block align-top" alt="">
-</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <li class="nav-item active">
-    <a class="nav-link" href="acce_info.php">เวลาเข้าใช้งาน <span class="sr-only">(current)</span></a>
-    </li>
-    <li class="nav-item active">
-    <a class="nav-link" href="history.php">ประวัติพนักงาน</a>
-    </li>
-    <li class="nav-item active">
-    <a class="nav-link" href="score_chart.php">คะแนนการทดสอบ</a>
-    </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-        <a  class="nav-link" href="../logout_hr.php">ออกจากระบบ </a>
-        </form>
-    </div>
-    </nav>
-    <style>
-    body {
-        background-image: url('../images/wall.png');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-       
-        }
-    .navbar{
-        background-color: #660223;
-        /* overflow: hidden;
-        position: fixed;
-        top: 0;
-        width: 100%; */
-    }
-    .nav-link {
-        color: white;
-    }
-    .navbar-toggler{
-        border-color: rgb(255,102,203);
-    }
-    .navbar-toggler-icon{
-        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,102,203, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-    }
-    .text{
-    text-align: center;
-    background-image: url('../images/wallpa.jpg');
-    color: white;
-    height: 80px;
-    padding: 21px; 
-   }
-    .pre{
-    font-size: 27px;
-    font-weight: bold;
-    }
-    /* .horizonMix{
-        font-size: 27px;
-    } */
-    </style>
-     <div class="text"><h3>คะแนนการทดสอบ</h3></div><br>
+    <?php include("head.php"); ?>
+    
+     <div class="text"><p>คะแนนการทดสอบ</p></div>
      <div class="container">
       <div class="link">
-        <h6><a href="index.php" class="text-reset">ADMIN</a> > <a href="MGRoom_ADMIN.php?code=<?php echo  $room;?>" class="text-reset">หน้าหลัก</a> > คะแนนการทดสอบ</a></h6>
+        <h5><a href="index.php" class="text-reset">ADMIN</a> > <a href="MGRoom_ADMIN.php?code=<?php echo  $room;?>" class="text-reset">หน้าหลัก</a> > คะแนนการทดสอบ</a></h5>
    </div>
       </div><br>
       <div class="container">
@@ -159,8 +87,8 @@ var chart = new Chart(ctx, {
         datasets: [{
             
             label: 'คะแนนก่อนเรียน',
-            backgroundColor: '#FFB384',
-            hoverBackgroundColor : '#493829',
+            backgroundColor: '#5ba8a0',
+            hoverBackgroundColor : '#416F6A',
            
             data: <?=json_encode($pretest)?>
         }]
@@ -199,16 +127,16 @@ var chart = new Chart(ctx, {
         datasets: [{
             
             label: 'คะแนนก่อนเรียน',
-            backgroundColor: '#FFB384',
-            hoverBackgroundColor : '#493829',
+            backgroundColor: '#5ba8a0',
+            hoverBackgroundColor : '#416F6A',
            
             data: <?=json_encode($bbb)?>
         },
         {
             
             label: 'คะแนนหลังเรียน',
-            backgroundColor: '#668D3C',
-            hoverBackgroundColor : '#668D3C',
+            backgroundColor: '#5d6e1e',
+            hoverBackgroundColor : '#434D20',
            
             data: <?=json_encode($ccc)?>
         }]
@@ -235,3 +163,18 @@ var chart = new Chart(ctx, {
     }
 });
 </script>
+
+<style>
+.text {
+  padding: 16px 0 0;
+  letter-spacing: 2px;
+  font-size: 40px;
+  text-align: center;
+  color: #551524;
+}
+.pre {
+font-size: 27px;
+font-weight: bold;
+}
+
+</style>
